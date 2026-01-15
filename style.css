@@ -1,3 +1,76 @@
+/* ─── GLOBAL ───────────────────────────────── */
+body {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  background: #0f1115;
+  color: #d1d5db;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* ─── SIDEBAR ───────────────────────────────── */
+.sidebar {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 220px;
+  height: 100vh;
+  background: #0c0f14;
+  border-right: 2px solid #3e3a36;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 30px 10px;
+  z-index: 1000;
+}
+
+.sidebar .logo a {
+  font-family: 'Oswald', sans-serif;
+  font-size: 1.8rem;
+  color: #f0f0e8;
+  letter-spacing: 2px;
+}
+
+.sidebar .nav-links {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-top: 40px;
+}
+
+.sidebar .nav-links a {
+  display: block;
+  width: 90%;
+  margin: 8px auto;
+  padding: 12px 0;
+  text-align: center;
+  border-radius: 6px;
+  background: linear-gradient(145deg, #1a1f22, #1f2326);
+  border: 1px solid #3e3a36;
+  font-weight: bold;
+  color: #f0f0e8;
+  transition: all 0.2s ease;
+}
+
+.sidebar .nav-links a:hover {
+  background: #6b4226;
+  color: #fff;
+  transform: translateX(3px);
+}
+
+.discord-btn {
+  color: #b33a3a;
+}
+
+/* ─── MAIN CONTENT ───────────────────────────────── */
+.main-content {
+  margin-left: 220px;
+  padding: 20px 40px;
+}
+
 /* ─── HERO ───────────────────────────────── */
 .hero {
   height: 85vh;
@@ -13,7 +86,6 @@
   overflow: hidden;
 }
 
-/* Fake grunge/texture using CSS only */
 .hero::before {
   content: '';
   position: absolute;
@@ -35,120 +107,132 @@
   z-index: 2;
 }
 
-/* ─── RULES PAGE ───────────────────────────────── */
-.rules-page-container {
-  display: flex;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 40px 20px;
-  gap: 40px;
-  align-items: flex-start;
-  background: #0f1115; /* dark survival tone */
-  border-radius: 10px;
-}
-
-.rules-sidebar {
-  flex: 0 0 220px;
-  position: sticky;
-  top: 100px;
-  background: #1a1f22;
-  padding: 20px;
-  border-radius: 10px;
-  border: 2px solid #6b4226;
-  box-shadow: 0 0 15px rgba(0,0,0,0.5);
-}
-
-.rules-sidebar h3 {
+.hero h1 {
   font-family: 'Oswald', sans-serif;
-  margin-bottom: 15px;
-  color: #b33a3a;
-  text-shadow: 1px 1px 2px #000;
+  font-size: 4.5rem;
+  letter-spacing: 5px;
+  margin-bottom: 10px;
+  color: #d1d5db;
+  text-shadow: 2px 2px 0 #000;
 }
 
-.rules-sidebar .toc-links a {
+.animated-text {
+  animation: fadeInUp 2s ease forwards;
+  opacity: 0;
+}
+
+@keyframes fadeInUp {
+  0% { transform: translateY(20px); opacity: 0; }
+  100% { transform: translateY(0); opacity: 1; }
+}
+
+.hero p {
+  font-size: 1.2rem;
+  opacity: 0.9;
+}
+
+.platform {
   display: block;
-  margin: 10px 0;
-  padding: 8px 12px;
-  border-radius: 5px;
-  color: #f0f0e8;
-  background: linear-gradient(145deg, #2a2f33, #1f2326);
-  border: 1px solid #3e3a36;
-  transition: all 0.2s ease;
-}
-
-.rules-sidebar .toc-links a:hover {
-  background: #6b4226;
-  color: #fff;
-  transform: translateX(3px);
-}
-
-.rules-main {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  gap: 60px;
-}
-
-.rules-category h2 {
-  font-family: 'Oswald', sans-serif;
-  font-size: 2.2rem;
-  color: #b33a3a;
-  text-shadow: 1px 1px 2px #000;
-  margin-bottom: 25px;
-  border-bottom: 2px solid #3e3a36;
-  padding-bottom: 5px;
-}
-
-.rules-category .card {
-  background: #1a1f22;
-  padding: 25px;
-  border-radius: 8px;
-  border: 1px solid #3e3a36;
-  box-shadow: 0 0 10px rgba(0,0,0,0.5);
-  text-align: left;
-  line-height: 1.5;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-  color: #f0f0e8;
-}
-
-.rules-category .card:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 0 20px rgba(107,66,38,0.4);
-}
-
-.rules-category .card a {
+  margin: 15px 0 30px;
   color: #b33a3a;
   font-weight: bold;
-  text-decoration: underline;
+  letter-spacing: 1px;
 }
 
-.back-home .buttons {
+/* ─── BUTTONS ───────────────────────────────── */
+.buttons a {
   display: inline-block;
-  margin-top: 20px;
+  margin: 10px;
   padding: 14px 30px;
   border: 1px solid #6b4226;
-  border-radius: 6px;
-  background: linear-gradient(145deg, #2a2f33, #1f2326);
   color: #f0f0e8;
   font-weight: bold;
+  border-radius: 6px;
+  background: rgba(50,45,40,0.3);
   transition: all 0.3s ease;
 }
 
-.back-home .buttons:hover {
+.buttons a:hover {
   background: #6b4226;
   color: #fff;
   transform: translateY(-2px);
 }
 
-@media(max-width: 1024px) {
-  .rules-page-container {
-    flex-direction: column;
-    padding: 20px 10px;
-  }
-  .rules-sidebar {
-    position: relative;
-    top: 0;
-    width: 100%;
-    margin-bottom: 20px;
-  }
+/* ─── SECTIONS ───────────────────────────────── */
+section {
+  padding: 60px 0;
+  text-align: center;
 }
+
+h2 {
+  margin-bottom: 40px;
+  font-family: 'Oswald', sans-serif;
+  font-size: 2.5rem;
+  color: #b33a3a;
+}
+
+/* ─── CARDS ───────────────────────────────── */
+.features {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 25px;
+}
+
+.card {
+  background: #1a1f22;
+  padding: 30px;
+  border-radius: 10px;
+  text-align: center;
+  border: 1px solid #3e3a36;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0 15px rgba(107,66,38,0.3);
+}
+
+/* ─── SERVER STATUS ───────────────────────────────── */
+.status-card {
+  display: inline-block;
+  background: #1a1f22;
+  padding: 30px;
+  border-radius: 10px;
+  border: 2px solid #6b4226;
+  text-align: left;
+  max-width: 400px;
+  margin: 0 auto;
+  font-family: 'Inter', sans-serif;
+}
+
+.status-card p {
+  margin: 10px 0;
+  line-height: 1.5;
+}
+
+.status-card strong {
+  color: #b33a3a;
+}
+
+/* ─── FACTIONS ───────────────────────────────── */
+.factions .card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ─── DISCORD WIDGET ───────────────────────────────── */
+.discord-widget iframe {
+  border-radius: 10px;
+  border: 2px solid #3e3a36;
+  max-width: 100%;
+  height: 500px;
+  background: #1a1f22;
+}
+
+/* ─── FOOTER ───────────────────────────────── */
+footer {
+  text-align: center;
+  padding: 25px;
+  font-
