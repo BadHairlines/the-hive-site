@@ -3,26 +3,35 @@
 <head>
   <meta charset="UTF-8">
   <title>The Hive - Server Info</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="style.css">
   <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600&family=Inter&display=swap" rel="stylesheet">
 </head>
 <body>
 
-  <!-- SIDEBAR -->
+  <!-- NAVIGATION -->
   <aside class="sidebar">
     <div class="logo"><a href="index.html">THE HIVE</a></div>
     <nav class="nav-links">
       <a href="index.html">Home</a>
       <a href="server.html" class="active">Our Servers</a>
       <a href="rules.html">Rules</a>
-      <a href="https://discord.gg/thehivedayz" class="discord-btn" target="_blank">Discord</a>
+      <a href="https://discord.gg/thehivedayz" class="discord-btn" target="_blank" aria-label="Join The Hive Discord">Discord</a>
     </nav>
   </aside>
 
-  <!-- MAIN CONTENT -->
+  <header class="mobile-header">
+    <div class="logo"><a href="index.html">THE HIVE</a></div>
+    <nav class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="server.html" class="active">Servers</a>
+      <a href="rules.html">Rules</a>
+      <a href="https://discord.gg/thehivedayz" class="discord-btn" target="_blank" aria-label="Join The Hive Discord">Discord</a>
+    </nav>
+  </header>
+
   <div class="main-content">
 
-    <!-- HERO -->
     <header class="hero">
       <div class="hero-content">
         <h1 class="animated-text">SERVER INFORMATION</h1>
@@ -30,7 +39,6 @@
       </div>
     </header>
 
-    <!-- SERVER DETAILS -->
     <section class="why-play">
       <h2>Server Details</h2>
       <div class="features">
@@ -40,14 +48,14 @@
         <div class="card">💣 Raiding: Weekends Only</div>
         <div class="card">🛡️ Community: Active & Moderated</div>
       </div>
-      <section class="back-home">
+
+      <div class="back-home">
         <a href="index.html" class="buttons">← Back Home</a>
-      </section>
+      </div>
     </section>
 
   </div>
 
-  <!-- FOOTER -->
   <footer>
     <p>© 2026 The Hive DayZ Community</p>
   </footer>
