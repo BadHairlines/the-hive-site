@@ -1,0 +1,56 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #0f1115;
+  color: #d1d5db;
+  text-align: center;
+}
+
+.hero {
+  padding: 80px 20px;
+  background: linear-gradient(#0f1115, #161a20);
+}
+
+h1 {
+  font-size: 4rem;
+  letter-spacing: 4px;
+}
+
+.platform {
+  display: block;
+  margin-top: 10px;
+  color: #b33a3a;
+  font-weight: bold;
+}
+
+.buttons a {
+  display: inline-block;
+  margin: 15px;
+  padding: 12px 25px;
+  border: 1px solid #b33a3a;
+  color: #d1d5db;
+  text-decoration: none;
+}
+
+.buttons a.discord {
+  background: #b33a3a;
+}
+
+.features {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+  padding: 40px;
+}
+
+.features div {
+  background: #161a20;
+  padding: 20px;
+  border-radius: 6px;
+}
+
+footer {
+  padding: 20px;
+  font-size: 0.9rem;
+  opacity: 0.7;
+}
