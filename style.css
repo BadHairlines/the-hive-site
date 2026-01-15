@@ -1,6 +1,11 @@
 /* ─── GLOBAL ───────────────────────────────── */
-body {
+* {
+  box-sizing: border-box;
   margin: 0;
+  padding: 0;
+}
+
+body {
   font-family: 'Inter', sans-serif;
   background: #f9f9f9;
   color: #333;
@@ -67,6 +72,43 @@ a {
   font-weight: bold;
 }
 
+/* ─── MOBILE HEADER ───────────────────────────────── */
+.mobile-header {
+  display: none;
+  width: 100%;
+  background: #fff;
+  border-bottom: 1px solid #e0e0e0;
+  padding: 10px 20px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.mobile-header .logo a {
+  font-family: 'Oswald', sans-serif;
+  font-size: 1.6rem;
+  color: #333;
+  letter-spacing: 2px;
+}
+
+.mobile-header .nav-links {
+  display: flex;
+  gap: 10px;
+}
+
+.mobile-header .nav-links a {
+  padding: 8px 12px;
+  font-weight: 600;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+  background: #f0f0f0;
+}
+
+.mobile-header .nav-links a.active,
+.mobile-header .nav-links a:hover {
+  background: #ffd166;
+  color: #000;
+}
+
 /* ─── MAIN CONTENT ───────────────────────────────── */
 .main-content {
   margin-left: 220px;
@@ -79,7 +121,7 @@ a {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(to bottom, #ffecd2, #fcb69f);
+  background: linear-gradient(135deg, #ffecd2, #fcb69f);
   position: relative;
   border-radius: 10px;
   margin-bottom: 50px;
@@ -122,24 +164,6 @@ a {
   letter-spacing: 1px;
 }
 
-/* ─── BUTTONS ───────────────────────────────── */
-.buttons a {
-  display: inline-block;
-  margin: 10px;
-  padding: 14px 30px;
-  border-radius: 8px;
-  font-weight: bold;
-  background: #ffd166;
-  color: #000;
-  transition: all 0.3s ease;
-}
-
-.buttons a:hover {
-  background: #ef476f;
-  color: #fff;
-  transform: translateY(-2px);
-}
-
 /* ─── SECTIONS ───────────────────────────────── */
 section {
   padding: 60px 0;
@@ -153,7 +177,7 @@ h2 {
   color: #ef476f;
 }
 
-/* ─── CARDS ───────────────────────────────── */
+/* ─── FEATURE CARDS ───────────────────────────────── */
 .features {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -169,17 +193,12 @@ h2 {
   transition: transform 0.2s ease, box-shadow 0.2s ease;
   color: #333;
   box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+  font-weight: 600;
 }
 
 .card:hover {
   transform: translateY(-5px);
   box-shadow: 0 15px 30px rgba(0,0,0,0.1);
-}
-
-.card a {
-  color: #ef476f;
-  font-weight: bold;
-  text-decoration: underline;
 }
 
 /* ─── DISCORD WIDGET ───────────────────────────────── */
@@ -199,6 +218,24 @@ footer {
   border-top: 1px solid #e0e0e0;
 }
 
+/* ─── BUTTONS ───────────────────────────────── */
+.buttons a {
+  display: inline-block;
+  margin: 10px;
+  padding: 14px 30px;
+  border-radius: 8px;
+  font-weight: bold;
+  background: #ffd166;
+  color: #000;
+  transition: all 0.3s ease;
+}
+
+.buttons a:hover {
+  background: #ef476f;
+  color: #fff;
+  transform: translateY(-2px);
+}
+
 /* ─── RESPONSIVE ───────────────────────────────── */
 @media(max-width: 1024px) {
   .main-content {
@@ -207,24 +244,11 @@ footer {
   }
 
   .sidebar {
-    position: relative;
-    width: 100%;
-    height: auto;
-    flex-direction: row;
-    justify-content: space-around;
-    padding: 10px 0;
-    border-right: none;
-    border-bottom: 1px solid #e0e0e0;
+    display: none;
   }
 
-  .sidebar .nav-links {
-    flex-direction: row;
-    margin-top: 0;
-  }
-
-  .sidebar .nav-links a {
-    margin: 0 5px;
-    padding: 10px 15px;
+  .mobile-header {
+    display: flex;
   }
 
   .features {
