@@ -19,17 +19,20 @@ a {
   padding: 15px 40px;
   background: #0c0f14;
   border-bottom: 1px solid #1f2933;
+  position: sticky;
+  top: 0;
+  z-index: 10;
 }
 
-.logo {
+.logo a {
   font-family: 'Oswald', sans-serif;
-  font-size: 1.6rem;
   letter-spacing: 2px;
 }
 
 .nav-links a {
   margin-left: 20px;
   opacity: 0.8;
+  transition: opacity 0.2s;
 }
 
 .nav-links a:hover {
@@ -52,11 +55,21 @@ a {
     url("assets/thehive.png");
   background-size: cover;
   background-position: center;
+  position: relative;
 }
 
 .hero-content {
   text-align: center;
   max-width: 700px;
+  position: relative;
+  z-index: 2;
+}
+
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at center, transparent 40%, rgba(0,0,0,0.6));
 }
 
 .hero h1 {
@@ -64,6 +77,16 @@ a {
   font-size: 4.5rem;
   letter-spacing: 5px;
   margin-bottom: 10px;
+}
+
+.animated-text {
+  animation: fadeInUp 2s ease forwards;
+  opacity: 0;
+}
+
+@keyframes fadeInUp {
+  0% { transform: translateY(20px); opacity: 0; }
+  100% { transform: translateY(0); opacity: 1; }
 }
 
 .hero p {
@@ -93,12 +116,24 @@ a {
   color: #fff;
 }
 
-/* ─── FEATURES ───────────────────────────────── */
+/* ─── SECTIONS ───────────────────────────────── */
+section {
+  padding: 60px 40px;
+  text-align: center;
+}
+
+h2 {
+  margin-bottom: 40px;
+  font-family: 'Oswald', sans-serif;
+  font-size: 2.5rem;
+  color: #b33a3a;
+}
+
+/* ─── CARDS ───────────────────────────────── */
 .features {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 25px;
-  padding: 60px 40px;
 }
 
 .card {
@@ -115,10 +150,37 @@ a {
   box-shadow: 0 0 20px rgba(179, 58, 58, 0.15);
 }
 
+/* ─── SERVER STATUS ───────────────────────────────── */
+.status-card {
+  display: inline-block;
+  background: #161a20;
+  padding: 25px;
+  border-radius: 10px;
+  border: 1px solid #1f2933;
+  text-align: left;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+/* ─── DISCORD WIDGET ───────────────────────────────── */
+.discord-widget iframe {
+  border-radius: 10px;
+  border: 1px solid #1f2933;
+  max-width: 100%;
+}
+
 /* ─── FOOTER ───────────────────────────────── */
 footer {
   text-align: center;
   padding: 25px;
   font-size: 0.85rem;
   opacity: 0.6;
+}
+
+/* ─── RESPONSIVE ───────────────────────────────── */
+@media(max-width: 768px){
+  .navbar { flex-direction: column; }
+  .nav-links { margin-top: 10px; }
+  .hero h1 { font-size: 3rem; }
+  .buttons a { padding: 12px 20px; }
 }
