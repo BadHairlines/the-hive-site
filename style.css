@@ -2,8 +2,8 @@
 body {
   margin: 0;
   font-family: 'Inter', sans-serif;
-  background: #0f1115;
-  color: #d1d5db;
+  background: #f9f9f9;
+  color: #333;
 }
 
 a {
@@ -18,19 +18,20 @@ a {
   top: 0;
   width: 220px;
   height: 100vh;
-  background: #0c0f14 url('https://i.postimg.cc/2yJcJgHk/grunge-overlay.png') repeat;
-  border-right: 2px solid #3e3a36;
+  background: #ffffff;
+  border-right: 1px solid #e0e0e0;
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 30px 10px;
   z-index: 1000;
+  box-shadow: 2px 0 10px rgba(0,0,0,0.05);
 }
 
 .sidebar .logo a {
   font-family: 'Oswald', sans-serif;
   font-size: 1.8rem;
-  color: #f0f0e8;
+  color: #333;
   letter-spacing: 2px;
 }
 
@@ -47,77 +48,58 @@ a {
   margin: 8px auto;
   padding: 12px 0;
   text-align: center;
-  border-radius: 6px;
-  background: linear-gradient(145deg, #1a1f22, #1f2326);
-  border: 1px solid #3e3a36;
-  font-weight: bold;
-  color: #f0f0e8;
+  border-radius: 8px;
+  background: #f0f0f0;
+  font-weight: 600;
+  color: #333;
   transition: all 0.2s ease;
 }
 
-.sidebar .nav-links a:hover {
-  background: #6b4226;
-  color: #fff;
+.sidebar .nav-links a:hover,
+.sidebar .nav-links a.active {
+  background: #ffd166;
+  color: #000;
   transform: translateX(3px);
 }
 
 .discord-btn {
-  color: #b33a3a;
+  color: #ef476f;
+  font-weight: bold;
 }
 
 /* ─── MAIN CONTENT ───────────────────────────────── */
 .main-content {
   margin-left: 220px;
-  padding: 20px 40px;
+  padding: 30px 50px;
 }
 
 /* ─── HERO ───────────────────────────────── */
 .hero {
-  height: 85vh;
+  height: 70vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  background:
-    linear-gradient(rgba(15,17,21,0.85), rgba(15,17,21,0.95)),
-    url("https://i.postimg.cc/yYCX3q38/thehive.png");
-  background-size: cover;
-  background-position: center;
+  background: linear-gradient(to bottom, #ffecd2, #fcb69f);
   position: relative;
-  overflow: hidden;
-}
-
-.hero::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: repeating-linear-gradient(
-    45deg,
-    rgba(0,0,0,0.05),
-    rgba(0,0,0,0.05) 2px,
-    transparent 2px,
-    transparent 4px
-  );
-  z-index: 1;
+  border-radius: 10px;
+  margin-bottom: 50px;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
 }
 
 .hero-content {
   text-align: center;
   max-width: 700px;
-  position: relative;
-  z-index: 2;
 }
 
 .hero h1 {
   font-family: 'Oswald', sans-serif;
-  font-size: 4.5rem;
-  letter-spacing: 5px;
+  font-size: 4rem;
   margin-bottom: 10px;
-  color: #d1d5db;
-  text-shadow: 2px 2px 0 #000;
+  color: #333;
 }
 
 .animated-text {
-  animation: fadeInUp 2s ease forwards;
+  animation: fadeInUp 1.5s ease forwards;
   opacity: 0;
 }
 
@@ -128,14 +110,15 @@ a {
 
 .hero p {
   font-size: 1.2rem;
-  opacity: 0.9;
+  color: #555;
+  margin-bottom: 10px;
 }
 
 .platform {
   display: block;
-  margin: 15px 0 30px;
-  color: #b33a3a;
-  font-weight: bold;
+  margin-top: 15px;
+  font-weight: 600;
+  color: #ef476f;
   letter-spacing: 1px;
 }
 
@@ -144,16 +127,15 @@ a {
   display: inline-block;
   margin: 10px;
   padding: 14px 30px;
-  border: 1px solid #6b4226;
-  color: #f0f0e8;
+  border-radius: 8px;
   font-weight: bold;
-  border-radius: 6px;
-  background: rgba(50,45,40,0.3);
+  background: #ffd166;
+  color: #000;
   transition: all 0.3s ease;
 }
 
 .buttons a:hover {
-  background: #6b4226;
+  background: #ef476f;
   color: #fff;
   transform: translateY(-2px);
 }
@@ -168,7 +150,7 @@ h2 {
   margin-bottom: 40px;
   font-family: 'Oswald', sans-serif;
   font-size: 2.5rem;
-  color: #b33a3a;
+  color: #ef476f;
 }
 
 /* ─── CARDS ───────────────────────────────── */
@@ -179,59 +161,33 @@ h2 {
 }
 
 .card {
-  background: #1a1f22 url('https://i.postimg.cc/2yJcJgHk/grunge-overlay.png') repeat;
-  background-size: cover;
-  padding: 30px;
-  border-radius: 10px;
+  background: #ffffff;
+  padding: 25px 20px;
+  border-radius: 12px;
   text-align: center;
-  border: 1px solid #3e3a36;
+  border: 1px solid #e0e0e0;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
-  color: #f0f0e8;
+  color: #333;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.05);
 }
 
 .card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 0 15px rgba(107,66,38,0.5);
+  box-shadow: 0 15px 30px rgba(0,0,0,0.1);
 }
 
-/* ─── SERVER STATUS ───────────────────────────────── */
-.status-card {
-  display: inline-block;
-  background: #1a1f22 url('https://i.postimg.cc/2yJcJgHk/grunge-overlay.png') repeat;
-  padding: 30px;
-  border-radius: 10px;
-  border: 2px solid #6b4226;
-  text-align: left;
-  max-width: 400px;
-  margin: 0 auto;
-  font-family: 'Inter', sans-serif;
-  color: #f0f0e8;
-}
-
-.status-card p {
-  margin: 10px 0;
-  line-height: 1.5;
-}
-
-.status-card strong {
-  color: #b33a3a;
-}
-
-/* ─── FACTIONS ───────────────────────────────── */
-.factions .card {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+.card a {
+  color: #ef476f;
+  font-weight: bold;
+  text-decoration: underline;
 }
 
 /* ─── DISCORD WIDGET ───────────────────────────────── */
 .discord-widget iframe {
-  border-radius: 10px;
-  border: 2px solid #3e3a36;
+  border-radius: 12px;
+  border: 1px solid #e0e0e0;
   max-width: 100%;
   height: 500px;
-  background: #1a1f22;
 }
 
 /* ─── FOOTER ───────────────────────────────── */
@@ -239,129 +195,44 @@ footer {
   text-align: center;
   padding: 25px;
   font-family: 'Inter', sans-serif;
-  color: #d1d5db;
-  border-top: 1px solid #3e3a36;
-}
-
-/* ─── RULES PAGE SPECIFIC ─────────────────────────────── */
-.rules-page-container {
-  display: flex;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 40px 20px;
-  gap: 40px;
-  align-items: flex-start;
-  background: #0f1115 url('https://i.postimg.cc/2yJcJgHk/grunge-overlay.png') repeat;
-  border-radius: 10px;
-}
-
-.rules-sidebar {
-  flex: 0 0 220px;
-  position: sticky;
-  top: 100px;
-  background: #1a1f22 url('https://i.postimg.cc/2yJcJgHk/grunge-overlay.png') repeat;
-  padding: 20px;
-  border-radius: 10px;
-  border: 2px solid #6b4226;
-  height: fit-content;
-  box-shadow: 0 0 15px rgba(0,0,0,0.5);
-}
-
-.rules-sidebar h3 {
-  font-family: 'Oswald', sans-serif;
-  margin-bottom: 15px;
-  color: #b33a3a;
-  text-shadow: 1px 1px 2px #000;
-}
-
-.rules-sidebar .toc-links a {
-  display: block;
-  margin: 10px 0;
-  padding: 8px 12px;
-  border-radius: 5px;
-  color: #f0f0e8;
-  background: rgba(50,45,40,0.3);
-  border: 1px solid #3e3a36;
-  transition: all 0.2s ease;
-}
-
-.rules-sidebar .toc-links a:hover {
-  background: #6b4226;
-  color: #fff;
-  transform: translateX(3px);
-}
-
-.rules-main {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  gap: 60px;
-}
-
-.rules-category h2 {
-  font-family: 'Oswald', sans-serif;
-  font-size: 2.2rem;
-  color: #b33a3a;
-  text-shadow: 1px 1px 2px #000;
-  margin-bottom: 25px;
-}
-
-.rules-category .card {
-  background: #1a1f22 url('https://i.postimg.cc/2yJcJgHk/grunge-overlay.png') repeat;
-  background-size: cover;
-  padding: 25px;
-  border-radius: 8px;
-  border: 1px solid #3e3a36;
-  box-shadow: 0 0 10px rgba(0,0,0,0.5);
-  text-align: left;
-  line-height: 1.5;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-  color: #f0f0e8;
-}
-
-.rules-category .card:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 0 20px rgba(107,66,38,0.5);
-}
-
-.rules-category .card a {
-  color: #b33a3a;
-  font-weight: bold;
-  text-decoration: underline;
-}
-
-.back-home .buttons {
-  display: inline-block;
-  margin-top: 20px;
-  padding: 14px 30px;
-  border: 1px solid #6b4226;
-  border-radius: 6px;
-  background: rgba(50,45,40,0.3);
-  color: #f0f0e8;
-  font-weight: bold;
-  transition: all 0.3s ease;
-}
-
-.back-home .buttons:hover {
-  background: #6b4226;
-  color: #fff;
-  transform: translateY(-2px);
+  color: #555;
+  border-top: 1px solid #e0e0e0;
 }
 
 /* ─── RESPONSIVE ───────────────────────────────── */
 @media(max-width: 1024px) {
   .main-content {
     margin-left: 0;
-    padding: 20px 15px;
+    padding: 20px;
   }
-  .rules-page-container {
-    flex-direction: column;
-    padding: 20px 10px;
-  }
-  .rules-sidebar {
+
+  .sidebar {
     position: relative;
-    top: 0;
     width: 100%;
-    margin-bottom: 20px;
+    height: auto;
+    flex-direction: row;
+    justify-content: space-around;
+    padding: 10px 0;
+    border-right: none;
+    border-bottom: 1px solid #e0e0e0;
+  }
+
+  .sidebar .nav-links {
+    flex-direction: row;
+    margin-top: 0;
+  }
+
+  .sidebar .nav-links a {
+    margin: 0 5px;
+    padding: 10px 15px;
+  }
+
+  .features {
+    grid-template-columns: 1fr;
+  }
+
+  .hero {
+    height: 50vh;
+    margin-bottom: 30px;
   }
 }
