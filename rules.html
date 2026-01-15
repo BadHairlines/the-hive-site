@@ -3,42 +3,54 @@
 <head>
   <meta charset="UTF-8">
   <title>The Hive - Rules</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="style.css">
   <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600&family=Inter&display=swap" rel="stylesheet">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
 
-  <!-- MAIN NAVIGATION TOPBAR (Mobile-Friendly) -->
-  <header class="mobile-header" style="background:#ffffff; border-bottom:1px solid #e0e0e0; padding:15px; display:flex; justify-content:space-between; align-items:center;">
-    <div class="logo"><a href="index.html" style="font-family:'Oswald',sans-serif; font-size:1.5rem; color:#333;">THE HIVE</a></div>
-    <a href="https://discord.gg/thehivedayz" class="discord-btn" target="_blank" style="color:#ef476f; font-weight:bold;">Discord</a>
+  <!-- NAVIGATION -->
+  <aside class="sidebar">
+    <div class="logo"><a href="index.html">THE HIVE</a></div>
+    <nav class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="server.html">Servers</a>
+      <a href="rules.html" class="active">Rules</a>
+      <a href="https://discord.gg/thehivedayz" class="discord-btn" target="_blank" aria-label="Join The Hive Discord">Discord</a>
+    </nav>
+  </aside>
+
+  <header class="mobile-header">
+    <div class="logo"><a href="index.html">THE HIVE</a></div>
+    <nav class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="server.html">Servers</a>
+      <a href="rules.html" class="active">Rules</a>
+      <a href="https://discord.gg/thehivedayz" class="discord-btn" target="_blank" aria-label="Join The Hive Discord">Discord</a>
+    </nav>
   </header>
 
-  <main style="padding:20px; max-width:900px; margin:0 auto;">
+  <div class="main-content">
 
-    <!-- HERO SECTION -->
-    <section class="hero" style="height:40vh; margin-bottom:30px;">
+    <header class="hero">
       <div class="hero-content">
-        <h1 class="animated-text" style="font-size:2.5rem;">SERVER RULES</h1>
-        <p style="font-size:1rem;">Play fair, survive, and enjoy PvP!</p>
+        <h1 class="animated-text">SERVER RULES</h1>
+        <p>Play fair, survive, and enjoy PvP!</p>
       </div>
-    </section>
+    </header>
 
-    <!-- MOBILE TOC -->
-    <section class="rules-toc" style="margin-bottom:30px; text-align:left;">
-      <h2 style="font-size:1.8rem; color:#ef476f; margin-bottom:15px;">Contents</h2>
-      <ul style="padding-left:20px; list-style-type:disc;">
-        <li><a href="#community" style="color:#333;">Community Rules</a></li>
-        <li><a href="#server" style="color:#333;">Server Rules</a></li>
-        <li><a href="#base" style="color:#333;">Base Building Rules</a></li>
-        <li><a href="#raiding" style="color:#333;">General Raiding</a></li>
-        <li><a href="#weekday" style="color:#333;">Weekday Raiding</a></li>
-        <li><a href="#faction" style="color:#333;">Faction Rules</a></li>
+    <section class="rules-toc">
+      <h2>Contents</h2>
+      <ul>
+        <li><a href="#community">Community Rules</a></li>
+        <li><a href="#server">Server Rules</a></li>
+        <li><a href="#base">Base Building Rules</a></li>
+        <li><a href="#raiding">General Raiding</a></li>
+        <li><a href="#weekday">Weekday Raiding</a></li>
+        <li><a href="#faction">Faction Rules</a></li>
       </ul>
     </section>
 
-    <!-- RULES SECTIONS -->
     <section id="community" class="rules-category">
       <h2>📜 Community Rules</h2>
       <div class="features">
@@ -81,15 +93,13 @@
       </div>
     </section>
 
-    <!-- BACK HOME BUTTON -->
-    <section class="back-home" style="margin:40px 0; text-align:center;">
-      <a href="index.html" class="buttons" style="display:inline-block; padding:14px 30px; border-radius:8px; font-weight:bold; background:#ffd166; color:#000;">← Back Home</a>
-    </section>
+    <div class="back-home">
+      <a href="index.html" class="buttons">← Back Home</a>
+    </div>
 
-  </main>
+  </div>
 
-  <!-- FOOTER -->
-  <footer style="text-align:center; padding:25px; color:#555; border-top:1px solid #e0e0e0;">
+  <footer>
     <p>© 2026 The Hive DayZ Community</p>
   </footer>
 
