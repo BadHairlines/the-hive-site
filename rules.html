@@ -1,156 +1,126 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>The Hive - Rules</title>
-  <link rel="stylesheet" href="style.css">
-  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600&family=Inter&display=swap" rel="stylesheet">
-</head>
-<body>
+/* ─── RULES PAGE SPECIFIC ─────────────────────────────── */
 
-  <!-- NAVBAR -->
-  <nav class="navbar">
-    <div class="logo"><a href="index.html">THE HIVE</a></div>
-    <div class="nav-links">
-      <a href="index.html">Home</a>
-      <a href="server.html">Our Servers</a>
-      <a href="rules.html">Rules</a>
-      <a href="https://discord.gg/thehivedayz" class="discord-btn" target="_blank" rel="noopener noreferrer">Discord</a>
-    </div>
-  </nav>
+/* Container & layout */
+.rules-page-container {
+  display: flex;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  gap: 40px;
+  align-items: flex-start;
+  background: #0f1115 url('https://i.postimg.cc/2yJcJgHk/grunge-overlay.png') repeat;
+  border-radius: 10px;
+}
 
-  <!-- HERO SECTION -->
-  <header class="hero">
-    <div class="hero-content">
-      <h1 class="animated-text">SERVER RULES</h1>
-      <p>Play fair, survive, and enjoy PvP!</p>
-    </div>
-  </header>
-  
-  <!-- RULES TABLE OF CONTENTS SIDEBAR -->
-  <div class="rules-page-container">
-    <!-- Sidebar -->
-    <aside class="rules-sidebar">
-      <h3>Jump to:</h3>
-      <nav class="toc-links">
-        <a href="#community">📜 Community Rules</a>
-        <a href="#server">⚔️ Server Rules</a>
-        <a href="#building">🔨 Base Building</a>
-        <a href="#general-raiding">💥 General Raiding</a>
-        <a href="#weekday-raiding">💥 Weekday Raiding</a>
-        <a href="#faction">🏴 Faction Rules</a>
-      </nav>
-    </aside>
+/* Sidebar */
+.rules-sidebar {
+  flex: 0 0 220px;
+  position: sticky;
+  top: 100px;
+  background: #1a1f22 url('https://i.postimg.cc/2yJcJgHk/grunge-overlay.png');
+  padding: 20px;
+  border-radius: 10px;
+  border: 2px solid #6b4226;
+  height: fit-content;
+  box-shadow: 0 0 15px rgba(0,0,0,0.5);
+}
 
-    <!-- Main Content -->
-    <main class="rules-main">
-      <section id="community" class="rules-category">
-        <h2>📜 Community Rules</h2>
-        <div class="features">
-          <div class="card">Any ToS violations such as the F-slur, Hard R, or "Kill Yourself" are an instant permanent ban.</div>
-          <div class="card">Harassment, being creepy/weird toward females, or sexual misconduct will result in a ban.</div>
-          <div class="card">Do not share personal photos, videos, or insults involving another player’s family.</div>
-          <div class="card">No staff disrespect. Staff are here to help.</div>
-          <div class="card">Staff mentions are for support requests only. Misuse will result in a mute.</div>
-          <div class="card">Do not slander the community, staff, or its members.</div>
-          <div class="card">Respect administrative orders and decisions.</div>
-          <div class="card">If you suspect abuse of power, open a support ticket for another staff member review.</div>
-          <div class="card">Do not disclose locations of player/faction bases.</div>
-          <div class="card">Do not claim to be part of factions you are not a member of.</div>
-          <div class="card">Members cannot sell credits or in-game items for real-life money.</div>
-          <div class="card">No alt accounts to bypass bans, mutes, or restrictions.</div>
-          <div class="card">Do not impersonate others.</div>
-          <div class="card">Do not link gamertags that do not belong to you.</div>
-          <div class="card">Do not disrupt others in private or faction channels.</div>
-          <div class="card">Do not falsely accuse or report players.</div>
-          <div class="card">Report rule violations if you witness them.</div>
-          <div class="card">Do not mention @everyone, @here, @Owner, or @staff unnecessarily.</div>
-          <div class="card">No advertising other communities unless approved by the owner.</div>
-          <div class="card">You may advertise your social media if it doesn’t promote other servers.</div>
-        </div>
-      </section>
+.rules-sidebar h3 {
+  font-family: 'Oswald', sans-serif;
+  margin-bottom: 15px;
+  color: #b33a3a;
+  text-shadow: 1px 1px 2px #000;
+}
 
-      <section id="server" class="rules-category">
-        <h2>⚔️ Server Rules</h2>
-        <div class="features">
-          <div class="card">Glitching, exploiting bugs, or enemy teleport locations is strictly prohibited.</div>
-          <div class="card">Shooting into a base or being within 100m during illegal activity makes you responsible.</div>
-          <div class="card">Do not kill a freshly spawned player until 60 seconds have passed.</div>
-          <div class="card">6-hour cooldown after leaving/kicked from a faction before returning.</div>
-          <div class="card">Do not use information from factions you left or were kicked from.</div>
-          <div class="card">Do not betray players after an official agreement.</div>
-          <div class="card">Do not use faction flags or armbands of other factions.</div>
-          <div class="card">Do not log out within 50m of another player's base.</div>
-          <div class="card">After using a vehicle, destroy its engine for fairness.</div>
-          <div class="card">Keep flag areas clear of loose items to reduce server stress.</div>
-          <div class="card">Report any rule violations for fair gameplay.</div>
-        </div>
-      </section>
+.rules-sidebar .toc-links a {
+  display: block;
+  margin: 10px 0;
+  padding: 8px 12px;
+  border-radius: 5px;
+  color: #f0f0e8;
+  background: rgba(50,45,40,0.3);
+  border: 1px solid #3e3a36;
+  transition: all 0.2s ease;
+}
 
-      <section id="building" class="rules-category">
-        <h2>🔨 Base Building Rules</h2>
-        <div class="features">
-          <div class="card">All bases must be raidable.</div>
-          <div class="card">Log walls are forbidden.</div>
-          <div class="card">Tents cannot block entrances, exits, gates, or ladders.</div>
-          <div class="card">Walls must allow walking space.</div>
-          <div class="card">Fence posts cannot form indestructible walls alone.</div>
-          <div class="card">Barbed wire must attach to at least 2 frame walls.</div>
-          <div class="card">Tents cannot be stacked more than two high.</div>
-          <div class="card">Main roads must stay clear. Landmines allowed; nothing else.</div>
-        </div>
-      </section>
+.rules-sidebar .toc-links a:hover {
+  background: #6b4226;
+  color: #fff;
+  transform: translateX(3px);
+}
 
-      <section id="general-raiding" class="rules-category">
-        <h2>💥 General Raiding Rules</h2>
-        <div class="features">
-          <div class="card">Raid Weekend: Fri 8pm → Sun 8pm ET.</div>
-          <div class="card">Raiding a base must be recorded; failure may result in a ban.</div>
-          <div class="card">No boosting into bases via watchtowers, tents, or campfires.</div>
-          <div class="card">No camping inside a base after raiding.</div>
-          <div class="card">Griefing large amounts of items will result in 1-month console ID ban.</div>
-          <div class="card">No logging out inside other players’ bases.</div>
-          <div class="card">No teaming with other factions during raids/events.</div>
-          <div class="card">Cannot claim ownership of custom bases unless confirmed by Owner/Co-Owner.</div>
-          <div class="card">Vanilla bases may only be claimed if inactive.</div>
-        </div>
-      </section>
+/* Main rules content */
+.rules-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 60px;
+}
 
-      <section id="weekday-raiding" class="rules-category">
-        <h2>💥 Weekday Raiding Rules</h2>
-        <div class="features">
-          <div class="card">Weekday raiding only by vaulting or dismantling walls from the exterior.</div>
-          <div class="card">No dismantling to exit during weekdays; suicide if stuck.</div>
-          <div class="card">Code raiding is forbidden on weekdays.</div>
-        </div>
-      </section>
+/* Category headers */
+.rules-category h2 {
+  font-family: 'Oswald', sans-serif;
+  font-size: 2.2rem;
+  color: #b33a3a;
+  text-shadow: 1px 1px 2px #000;
+  margin-bottom: 25px;
+}
 
-      <section id="faction" class="rules-category">
-        <h2>🏴 Faction Rules</h2>
-        <div class="features">
-          <div class="card">Faction leaders are responsible for their members’ actions.</div>
-          <div class="card">Repeat offenses may punish leaders or disband faction.</div>
-          <div class="card">Faction size: 4-15 members. Apply here: <a href="https://discord.com/channels/1109306235808911360/1109306236903633003" target="_blank" rel="noopener noreferrer">Application</a>.</div>
-          <div class="card">Factions get a flag & armband if available.</div>
-          <div class="card">Staff conduct regular faction activity checks; at least 4 members must respond.</div>
-          <div class="card">Failure to respond locks the faction channel until resolved.</div>
-          <div class="card">Ex-members cannot use info from past factions to sabotage them.</div>
-          <div class="card">All factions must fly their registered flag.</div>
-          <div class="card">White flags restricted to Solos, Duos, and Trios.</div>
-        </div>
-      </section>
+/* Rule cards */
+.rules-category .card {
+  background: #1a1f22 url('https://i.postimg.cc/2yJcJgHk/grunge-overlay.png') no-repeat center center;
+  background-size: cover;
+  padding: 25px;
+  border-radius: 8px;
+  border: 1px solid #3e3a36;
+  box-shadow: 0 0 10px rgba(0,0,0,0.5);
+  text-align: left;
+  line-height: 1.5;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  color: #f0f0e8;
+}
 
-      <!-- BACK HOME BUTTON -->
-      <section class="back-home">
-        <a href="index.html" class="buttons">← Back Home</a>
-      </section>
-    </main>
-  </div>
+.rules-category .card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 0 20px rgba(107,66,38,0.4);
+}
 
-  <!-- FOOTER -->
-  <footer>
-    <p>© The Hive DayZ Community</p>
-  </footer>
+/* Links inside cards */
+.rules-category .card a {
+  color: #b33a3a;
+  font-weight: bold;
+  text-decoration: underline;
+}
 
-</body>
-</html>
+/* Back Home button */
+.back-home .buttons {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 14px 30px;
+  border: 1px solid #6b4226;
+  border-radius: 6px;
+  background: rgba(50,45,40,0.3);
+  color: #f0f0e8;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+.back-home .buttons:hover {
+  background: #6b4226;
+  color: #fff;
+  transform: translateY(-2px);
+}
+
+/* Responsive */
+@media(max-width: 1024px) {
+  .rules-page-container {
+    flex-direction: column;
+    padding: 20px 10px;
+  }
+  .rules-sidebar {
+    position: relative;
+    top: 0;
+    width: 100%;
+    margin-bottom: 20px;
+  }
+}
