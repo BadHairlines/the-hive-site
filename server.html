@@ -2,45 +2,54 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Server Info - The Hive</title>
+  <title>The Hive - Server Info</title>
   <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600&family=Inter&display=swap" rel="stylesheet">
 </head>
 <body>
 
-  <!-- NAVBAR -->
-  <nav class="navbar">
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
     <div class="logo"><a href="index.html">THE HIVE</a></div>
-    <div class="nav-links">
+    <nav class="nav-links">
       <a href="index.html">Home</a>
-      <a href="server.html">Our Servers</a>
+      <a href="server.html" class="active">Our Servers</a>
       <a href="rules.html">Rules</a>
       <a href="https://discord.gg/thehivedayz" class="discord-btn" target="_blank">Discord</a>
-    </div>
-  </nav>
+    </nav>
+  </aside>
 
-  <!-- HERO -->
-  <header class="hero">
-    <div class="hero-content">
-      <h1 class="animated-text">SERVER INFORMATION</h1>
-      <p>Everything you need to know to join The Hive!</p>
-    </div>
-  </header>
+  <!-- MAIN CONTENT -->
+  <div class="main-content">
 
-  <!-- INFO CARDS -->
-  <section class="why-play">
-    <h2>Server Details</h2>
-    <div class="features">
-      <div class="card">🎮 Platform: Xbox</div>
-      <div class="card">⚔️ Playstyle: PvP / KOS</div>
-      <div class="card">🏗️ Base Building: Enabled</div>
-      <div class="card">💣 Raiding: Weekends Only</div>
-      <div class="card">🛡️ Community: Active & Moderated</div>
-    </div>
-    <a href="index.html" class="back-home">← Back Home</a>
-  </section>
+    <!-- HERO -->
+    <header class="hero">
+      <div class="hero-content">
+        <h1 class="animated-text">SERVER INFORMATION</h1>
+        <p>Everything you need to know to join The Hive!</p>
+      </div>
+    </header>
 
+    <!-- SERVER DETAILS -->
+    <section class="why-play">
+      <h2>Server Details</h2>
+      <div class="features">
+        <div class="card">🎮 Platform: Xbox</div>
+        <div class="card">⚔️ Playstyle: PvP / KOS</div>
+        <div class="card">🏗️ Base Building: Enabled</div>
+        <div class="card">💣 Raiding: Weekends Only</div>
+        <div class="card">🛡️ Community: Active & Moderated</div>
+      </div>
+      <section class="back-home">
+        <a href="index.html" class="buttons">← Back Home</a>
+      </section>
+    </section>
+
+  </div>
+
+  <!-- FOOTER -->
   <footer>
-    <p>© The Hive DayZ Community</p>
+    <p>© 2026 The Hive DayZ Community</p>
   </footer>
 
 </body>
