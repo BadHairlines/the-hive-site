@@ -57,21 +57,6 @@ a { text-decoration: none; color: inherit; }
 .menu-toggle span:nth-child(2) { top: 12px; }
 .menu-toggle span:nth-child(3) { top: 24px; }
 
-/* Active → X (rotates in place) */
-.menu-toggle.active span:nth-child(1) {
-  top: 12px;
-  transform: rotate(45deg);
-}
-
-.menu-toggle.active span:nth-child(2) {
-  opacity: 0;
-}
-
-.menu-toggle.active span:nth-child(3) {
-  top: 12px;
-  transform: rotate(-45deg);
-}
-
 /* ─── SIDEBAR ───────────────────────────── */
 .sidebar {
   position: fixed;
