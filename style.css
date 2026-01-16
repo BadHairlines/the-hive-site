@@ -16,12 +16,27 @@ a {
   color: inherit;
 }
 
-/* ─── SIDEBAR ───────────────────────────────── */
+/* ─── MENU BUTTON ─────────────────────────── */
+.menu-toggle {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  z-index: 2000;
+  font-size: 1.8rem;
+  background: #ffd166;
+  border: none;
+  border-radius: 8px;
+  padding: 8px 14px;
+  cursor: pointer;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+/* ─── SLIDE-OUT SIDEBAR ───────────────────── */
 .sidebar {
   position: fixed;
-  left: 0;
   top: 0;
-  width: 220px;
+  left: -260px;
+  width: 240px;
   height: 100vh;
   background: #ffffff;
   border-right: 1px solid #e0e0e0;
@@ -29,14 +44,18 @@ a {
   flex-direction: column;
   align-items: center;
   padding: 30px 10px;
-  z-index: 1000;
-  box-shadow: 2px 0 10px rgba(0,0,0,0.05);
+  z-index: 1500;
+  box-shadow: 2px 0 10px rgba(0,0,0,0.15);
+  transition: left 0.3s ease;
+}
+
+.sidebar.open {
+  left: 0;
 }
 
 .sidebar .logo a {
   font-family: 'Oswald', sans-serif;
   font-size: 1.8rem;
-  color: #333;
   letter-spacing: 2px;
 }
 
@@ -48,7 +67,6 @@ a {
 }
 
 .sidebar .nav-links a {
-  display: block;
   width: 90%;
   margin: 8px auto;
   padding: 12px 0;
@@ -56,15 +74,13 @@ a {
   border-radius: 8px;
   background: #f0f0f0;
   font-weight: 600;
-  color: #333;
   transition: all 0.2s ease;
 }
 
 .sidebar .nav-links a:hover,
 .sidebar .nav-links a.active {
   background: #ffd166;
-  color: #000;
-  transform: translateX(3px);
+  transform: translateX(4px);
 }
 
 .discord-btn {
@@ -72,46 +88,24 @@ a {
   font-weight: bold;
 }
 
-/* ─── MOBILE HEADER ───────────────────────────────── */
-.mobile-header {
-  display: none;
-  width: 100%;
-  background: #fff;
-  border-bottom: 1px solid #e0e0e0;
-  padding: 10px 20px;
-  align-items: center;
-  justify-content: space-between;
+/* ─── OVERLAY ─────────────────────────────── */
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.45);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  z-index: 1400;
 }
 
-.mobile-header .logo a {
-  font-family: 'Oswald', sans-serif;
-  font-size: 1.6rem;
-  color: #333;
-  letter-spacing: 2px;
+.overlay.show {
+  opacity: 1;
+  pointer-events: auto;
 }
 
-.mobile-header .nav-links {
-  display: flex;
-  gap: 10px;
-}
-
-.mobile-header .nav-links a {
-  padding: 8px 12px;
-  font-weight: 600;
-  border-radius: 6px;
-  transition: all 0.2s ease;
-  background: #f0f0f0;
-}
-
-.mobile-header .nav-links a.active,
-.mobile-header .nav-links a:hover {
-  background: #ffd166;
-  color: #000;
-}
-
-/* ─── MAIN CONTENT ───────────────────────────────── */
+/* ─── MAIN CONTENT ───────────────────────── */
 .main-content {
-  margin-left: 220px;
   padding: 30px 50px;
 }
 
@@ -122,7 +116,6 @@ a {
   align-items: center;
   justify-content: center;
   background: linear-gradient(135deg, #ffecd2, #fcb69f);
-  position: relative;
   border-radius: 10px;
   margin-bottom: 50px;
   box-shadow: 0 10px 20px rgba(0,0,0,0.1);
@@ -137,7 +130,6 @@ a {
   font-family: 'Oswald', sans-serif;
   font-size: 4rem;
   margin-bottom: 10px;
-  color: #333;
 }
 
 .animated-text {
@@ -146,14 +138,13 @@ a {
 }
 
 @keyframes fadeInUp {
-  0% { transform: translateY(20px); opacity: 0; }
-  100% { transform: translateY(0); opacity: 1; }
+  from { transform: translateY(20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
 }
 
 .hero p {
   font-size: 1.2rem;
   color: #555;
-  margin-bottom: 10px;
 }
 
 .platform {
@@ -161,10 +152,9 @@ a {
   margin-top: 15px;
   font-weight: 600;
   color: #ef476f;
-  letter-spacing: 1px;
 }
 
-/* ─── SECTIONS ───────────────────────────────── */
+/* ─── SECTIONS ───────────────────────────── */
 section {
   padding: 60px 0;
   text-align: center;
@@ -177,7 +167,7 @@ h2 {
   color: #ef476f;
 }
 
-/* ─── FEATURE CARDS ───────────────────────────────── */
+/* ─── FEATURE CARDS ───────────────────────── */
 .features {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -188,12 +178,10 @@ h2 {
   background: #ffffff;
   padding: 25px 20px;
   border-radius: 12px;
-  text-align: center;
   border: 1px solid #e0e0e0;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-  color: #333;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.05);
   font-weight: 600;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+  transition: 0.2s ease;
 }
 
 .card:hover {
@@ -201,24 +189,23 @@ h2 {
   box-shadow: 0 15px 30px rgba(0,0,0,0.1);
 }
 
-/* ─── DISCORD WIDGET ───────────────────────────────── */
+/* ─── DISCORD WIDGET ─────────────────────── */
 .discord-widget iframe {
   border-radius: 12px;
   border: 1px solid #e0e0e0;
-  max-width: 100%;
   height: 500px;
+  max-width: 100%;
 }
 
-/* ─── FOOTER ───────────────────────────────── */
+/* ─── FOOTER ─────────────────────────────── */
 footer {
   text-align: center;
   padding: 25px;
-  font-family: 'Inter', sans-serif;
   color: #555;
   border-top: 1px solid #e0e0e0;
 }
 
-/* ─── BUTTONS ───────────────────────────────── */
+/* ─── BUTTONS ────────────────────────────── */
 .buttons a {
   display: inline-block;
   margin: 10px;
@@ -226,8 +213,7 @@ footer {
   border-radius: 8px;
   font-weight: bold;
   background: #ffd166;
-  color: #000;
-  transition: all 0.3s ease;
+  transition: 0.3s;
 }
 
 .buttons a:hover {
@@ -236,27 +222,17 @@ footer {
   transform: translateY(-2px);
 }
 
-/* ─── RESPONSIVE ───────────────────────────────── */
-@media(max-width: 1024px) {
+/* ─── RESPONSIVE ─────────────────────────── */
+@media (max-width: 768px) {
   .main-content {
-    margin-left: 0;
     padding: 20px;
-  }
-
-  .sidebar {
-    display: none;
-  }
-
-  .mobile-header {
-    display: flex;
-  }
-
-  .features {
-    grid-template-columns: 1fr;
   }
 
   .hero {
     height: 50vh;
-    margin-bottom: 30px;
+  }
+
+  .features {
+    grid-template-columns: 1fr;
   }
 }
