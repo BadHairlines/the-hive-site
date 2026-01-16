@@ -2,192 +2,30 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>The Hive - DayZ Community</title>
+  <title>The Hive – DayZ Community</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600&family=Inter&display=swap" rel="stylesheet">
-
-  <style>
-    /* ─── GLOBAL ───────────────────────── */
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    body {
-      font-family: 'Inter', sans-serif;
-      background: #f9f9f9;
-      color: #333;
-    }
-    a { text-decoration: none; color: inherit; }
-
-    /* ─── MENU BUTTON ─────────────────── */
-    .menu-toggle {
-      position: fixed;
-      top: 20px;
-      left: 20px;
-      z-index: 2000;
-      font-size: 1.8rem;
-      background: #ffd166;
-      border: none;
-      border-radius: 8px;
-      padding: 8px 14px;
-      cursor: pointer;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-    }
-
-    /* ─── SLIDE SIDEBAR ───────────────── */
-    .sidebar {
-      position: fixed;
-      top: 0;
-      left: -260px;
-      width: 240px;
-      height: 100vh;
-      background: #fff;
-      border-right: 1px solid #e0e0e0;
-      padding: 30px 10px;
-      z-index: 1500;
-      transition: left 0.3s ease;
-      box-shadow: 2px 0 15px rgba(0,0,0,0.1);
-    }
-
-    .sidebar.open { left: 0; }
-
-    .sidebar .logo a {
-      font-family: 'Oswald', sans-serif;
-      font-size: 1.8rem;
-      letter-spacing: 2px;
-      display: block;
-      text-align: center;
-      margin-bottom: 40px;
-    }
-
-    .nav-links {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-    }
-
-    .nav-links a {
-      padding: 12px;
-      border-radius: 8px;
-      background: #f0f0f0;
-      font-weight: 600;
-      text-align: center;
-      transition: 0.2s;
-    }
-
-    .nav-links a:hover,
-    .nav-links a.active {
-      background: #ffd166;
-      transform: translateX(4px);
-    }
-
-    .discord-btn { color: #ef476f; }
-
-    /* ─── OVERLAY ─────────────────────── */
-    .overlay {
-      position: fixed;
-      inset: 0;
-      background: rgba(0,0,0,0.45);
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 0.3s ease;
-      z-index: 1400;
-    }
-
-    .overlay.show {
-      opacity: 1;
-      pointer-events: auto;
-    }
-
-    /* ─── MAIN CONTENT ───────────────── */
-    .main-content {
-      padding: 30px 50px;
-    }
-
-    /* ─── HERO ───────────────────────── */
-    .hero {
-      height: 70vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background: linear-gradient(135deg, #ffecd2, #fcb69f);
-      border-radius: 12px;
-      margin-bottom: 50px;
-    }
-
-    .hero-content { text-align: center; }
-
-    .hero h1 {
-      font-family: 'Oswald', sans-serif;
-      font-size: 4rem;
-    }
-
-    .platform {
-      display: block;
-      margin-top: 15px;
-      font-weight: 600;
-      color: #ef476f;
-    }
-
-    /* ─── SECTIONS ───────────────────── */
-    section {
-      padding: 60px 0;
-      text-align: center;
-    }
-
-    h2 {
-      margin-bottom: 40px;
-      font-family: 'Oswald', sans-serif;
-      color: #ef476f;
-      font-size: 2.5rem;
-    }
-
-    .features {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 25px;
-    }
-
-    .card {
-      background: #fff;
-      padding: 25px;
-      border-radius: 12px;
-      font-weight: 600;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.08);
-      transition: 0.2s;
-    }
-
-    .card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 15px 30px rgba(0,0,0,0.15);
-    }
-
-    /* ─── FOOTER ─────────────────────── */
-    footer {
-      text-align: center;
-      padding: 25px;
-      color: #555;
-      border-top: 1px solid #e0e0e0;
-    }
-
-    /* ─── MOBILE ─────────────────────── */
-    @media (max-width: 768px) {
-      .main-content { padding: 20px; }
-      .hero h1 { font-size: 3rem; }
-    }
-  </style>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<!-- MENU BUTTON -->
-<button class="menu-toggle">☰</button>
+<!-- TOP BAR -->
+<header class="topbar">
+  <button class="menu-toggle" aria-label="Open menu">
+    <span></span><span></span><span></span>
+  </button>
+
+  <div class="brand">THE HIVE</div>
+</header>
 
 <!-- SIDEBAR -->
 <aside class="sidebar" id="sidebar">
-  <div class="logo"><a href="index.html">THE HIVE</a></div>
   <nav class="nav-links">
     <a href="index.html" class="active">Home</a>
     <a href="server.html">Our Servers</a>
     <a href="rules.html">Rules</a>
-    <a href="https://discord.gg/thehivedayz" class="discord-btn" target="_blank">Discord</a>
+    <a href="https://discord.gg/thehivedayz" target="_blank" class="discord-btn">Discord</a>
   </nav>
 </aside>
 
@@ -195,15 +33,15 @@
 <div class="overlay" id="overlay"></div>
 
 <!-- MAIN -->
-<div class="main-content">
+<main class="main-content">
 
-  <header class="hero">
+  <section class="hero">
     <div class="hero-content">
       <h1>THE HIVE</h1>
       <p>Welcome to The Hive DayZ Community</p>
       <span class="platform">BASE BUILDING • RAID WEEKENDS</span>
     </div>
-  </header>
+  </section>
 
   <section>
     <h2>Why Play The Hive?</h2>
@@ -225,27 +63,12 @@
     </div>
   </section>
 
-</div>
+</main>
 
 <footer>
   © 2026 The Hive DayZ Community
 </footer>
 
-<script>
-  const btn = document.querySelector('.menu-toggle');
-  const sidebar = document.getElementById('sidebar');
-  const overlay = document.getElementById('overlay');
-
-  btn.onclick = () => {
-    sidebar.classList.toggle('open');
-    overlay.classList.toggle('show');
-  };
-
-  overlay.onclick = () => {
-    sidebar.classList.remove('open');
-    overlay.classList.remove('show');
-  };
-</script>
-
+<script src="app.js"></script>
 </body>
 </html>
