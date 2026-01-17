@@ -55,3 +55,38 @@ function countdown() {
 // Update countdown every second
 countdown();
 setInterval(countdown, 1000);
+
+/* ─── LOAD NEWS ───────────────────────── */
+fetch('news.json')
+  .then(res => res.json())
+  .then(news => {
+    const feed = document.getElementById('news-feed');
+    news.reverse().forEach(item => {
+      const card = document.createElement('div');
+      card.className = 'card';
+      card.innerHTML = `
+        <h3>${item.title}</h3>
+        <p>${item.content}</p>
+        <span class="date">${new Date(item.date).toDateString()}</span>
+      `;
+      feed.appendChild(card);
+    });
+  });
+
+/* ─── LOAD EVENTS ─────────────────────── */
+fetch('events.json')
+  .then(res => res.json())
+  .then(events => {
+    const feed = document.getElementById('events-feed');
+    events.forEach(event => {
+      const card = document.createElement('div');
+      card.className = 'card';
+      card.innerHTML = `
+        <h3>${event.title}</h3>
+        <p>${event.description}</p>
+        <p><strong>${new Date(event.date).toLocaleString()}</strong></p>
+      `;
+      feed.appendChild(card);
+    });
+  });
+
