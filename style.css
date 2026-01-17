@@ -30,7 +30,6 @@ a { text-decoration: none; color: inherit; }
   font-size: 1.6rem;
   letter-spacing: 2px;
   color: #fff;
-  text-shadow: 1px 1px 2px #FFA000; /* subtle honey glow */
 }
 
 /* HAMBURGER */
@@ -104,7 +103,6 @@ a { text-decoration: none; color: inherit; }
 .nav-links a:hover {
   background: #FFC107; /* honey gold highlight */
   color: #fff;
-  text-shadow: 0 1px 2px #FFA000; /* subtle glow */
 }
 
 /* OVERLAY */
@@ -133,30 +131,6 @@ a { text-decoration: none; color: inherit; }
   border-radius: 14px;
   margin: 40px;
   color: #212121;
-  text-align: center;
-}
-
-.hero h1 {
-  font-family: 'Oswald', sans-serif;
-  font-size: 3rem;
-  background: linear-gradient(90deg, #FFB300, #FFC107, #FF9800);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  text-shadow: 2px 2px 5px rgba(0,0,0,0.2); /* subtle glow */
-}
-
-.hero p {
-  font-size: 1.2rem;
-  margin: 12px 0;
-  color: #212121;
-  text-shadow: 1px 1px 2px rgba(255, 193, 7, 0.5);
-}
-
-.hero .platform {
-  display: inline-block;
-  margin-top: 8px;
-  font-weight: 600;
-  color: #FF6F00;
 }
 
 /* BUTTONS */
@@ -166,12 +140,11 @@ a { text-decoration: none; color: inherit; }
   padding: 10px 20px;
   border-radius: 8px;
   font-weight: 600;
-  transition: background 0.3s, box-shadow 0.3s;
+  transition: background 0.3s;
 }
 
 .btn:hover {
   background: #FFB300; /* honey gold hover */
-  box-shadow: 0 4px 10px rgba(255, 193, 7, 0.5);
 }
 
 .discord-btn {
@@ -185,23 +158,12 @@ a { text-decoration: none; color: inherit; }
   border-radius: 8px;
   padding: 16px;
   color: #212121;
-  transition: transform 0.3s, background 0.3s, box-shadow 0.3s;
+  transition: transform 0.3s, background 0.3s;
 }
 
 .card:hover {
   transform: translateY(-4px);
   background: #FFE082;
-  box-shadow: 0 4px 10px rgba(255, 193, 7, 0.3); /* hive glow */
-}
-
-/* HEADINGS */
-h2, h3 {
-  font-family: 'Oswald', sans-serif;
-  background: linear-gradient(90deg, #FFB300, #FFC107, #FF9800);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  margin-bottom: 16px;
-  text-shadow: 1px 1px 2px rgba(0,0,0,0.15);
 }
 
 /* FEATURES LAYOUT */
