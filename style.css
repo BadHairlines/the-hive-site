@@ -121,7 +121,7 @@ a { text-decoration: none; color: inherit; }
   display: flex;
   justify-content: center;
   align-items: center;
-  background: linear-gradient(135deg, #ffecd2, #fcb69f);
+  background: linear-gradient(135deg, #ffdf7f, #ffb84d);
   border-radius: 14px;
   margin-bottom: 80px;
 }
