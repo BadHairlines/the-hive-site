@@ -304,3 +304,79 @@ footer .social-links a {
     flex-direction: column;
   }
 }
+/* Scroll Animations */
+.animate {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+.animate.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Card & Button Micro-interactions */
+.btn {
+  transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+}
+.btn:hover {
+  transform: translateY(-2px) scale(1.03);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+.card:hover {
+  transform: translateY(-6px) scale(1.02);
+  box-shadow: 0 15px 35px rgba(0,0,0,0.12);
+}
+
+/* Hero Honeycomb Pattern */
+.hero {
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url('images/honeycomb.svg');
+  opacity: 0.08;
+  pointer-events: none;
+}
+
+/* Countdown urgency */
+#countdown.warning {
+  animation: pulse 1s infinite;
+  color: #ff4c00;
+}
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+}
+
+/* Sticky mobile CTA */
+.mobile-cta {
+  display: none;
+}
+@media (max-width: 768px) {
+  .mobile-cta {
+    display: block;
+    position: fixed;
+    bottom: 12px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2500;
+    background: var(--hive-accent);
+    color: #fff;
+    padding: 12px 20px;
+    border-radius: 12px;
+    font-weight: 700;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.2);
+    text-align: center;
+  }
+}
+
+/* Accessibility focus */
+:focus-visible {
+  outline: 3px solid var(--hive-accent);
+  outline-offset: 3px;
+}
+
