@@ -4,8 +4,13 @@
   <meta charset="UTF-8" />
   <title>The Hive – DayZ Community</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="The Hive DayZ Xbox server featuring PvP, base building, and weekend raids. Join our community today.">
+  <meta property="og:title" content="The Hive – DayZ Community">
+  <meta property="og:image" content="images/og-banner.jpg">
+  <meta property="og:type" content="website">
 
   <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600&family=Inter&display=swap" rel="stylesheet" />
 
   <!-- Styles -->
@@ -16,7 +21,7 @@
 
   <!-- Top Bar -->
   <header class="topbar">
-    <button class="menu-toggle" aria-label="Open navigation menu">
+    <button class="menu-toggle" aria-label="Open navigation menu" aria-expanded="false">
       <span></span>
       <span></span>
       <span></span>
@@ -50,16 +55,10 @@
       <div class="hero-content">
         <h1>THE HIVE</h1>
         <p>Welcome to The Hive DayZ Community</p>
-
-        <span class="platform">
-          BASE BUILDING • RAID WEEKENDS
-        </span>
-
+        <span class="platform">BASE BUILDING • RAID WEEKENDS</span>
         <div class="hero-buttons">
           <a href="server.html" class="btn">Join Server</a>
-          <a href="https://discord.gg/thehivedayz" target="_blank" class="btn discord-btn" rel="noopener">
-            Join Discord
-          </a>
+          <a href="https://discord.gg/thehivedayz" target="_blank" class="btn discord-btn" rel="noopener">Join Discord</a>
         </div>
       </div>
     </section>
@@ -90,27 +89,17 @@
     <section class="section" id="server-status">
       <h2>Live Server Status</h2>
       <div class="features">
-        <div class="card">
-          Server: <span id="server-name">The Hive #1</span>
-        </div>
-        <div class="card">
-          Players Online: <span id="player-count">Loading...</span>
-        </div>
-        <div class="card">
-          Map: <span id="server-map">Chernarus</span>
-        </div>
-        <div class="card">
-          Uptime: <span id="server-uptime">00:00</span>
-        </div>
+        <div class="card">Server: <span id="server-name">The Hive #1</span></div>
+        <div class="card">Players Online: <span id="player-count">Loading...</span></div>
+        <div class="card">Map: <span id="server-map">Chernarus</span></div>
+        <div class="card">Uptime: <span id="server-uptime">00:00</span></div>
       </div>
     </section>
 
     <!-- Next Event -->
     <section class="section" id="next-event">
       <h2>Next Event Countdown</h2>
-      <p>
-        Event starts in: <strong><span id="countdown"></span></strong>
-      </p>
+      <p>Event starts in: <strong><span id="countdown"></span></strong></p>
     </section>
 
     <!-- News -->
@@ -129,38 +118,69 @@
     <section class="section" id="gallery">
       <h2>Community Gallery</h2>
       <div class="features gallery">
-        <div class="card">
-          <img src="images/screenshot1.jpg" alt="DayZ gameplay screenshot 1" />
-        </div>
-        <div class="card">
-          <img src="images/screenshot2.jpg" alt="DayZ gameplay screenshot 2" />
-        </div>
-        <div class="card">
-          <img src="images/screenshot3.jpg" alt="DayZ gameplay screenshot 3" />
-        </div>
-        <div class="card">
-          <img src="images/screenshot4.jpg" alt="DayZ gameplay screenshot 4" />
-        </div>
+        <div class="card"><img src="images/screenshot1.webp" alt="DayZ gameplay screenshot 1" loading="lazy"></div>
+        <div class="card"><img src="images/screenshot2.webp" alt="DayZ gameplay screenshot 2" loading="lazy"></div>
+        <div class="card"><img src="images/screenshot3.webp" alt="DayZ gameplay screenshot 3" loading="lazy"></div>
+        <div class="card"><img src="images/screenshot4.webp" alt="DayZ gameplay screenshot 4" loading="lazy"></div>
       </div>
     </section>
 
   </main>
 
+  <!-- Sticky Mobile CTA -->
+  <a href="https://discord.gg/thehivedayz" class="mobile-cta">Join Discord</a>
+
   <!-- Footer -->
   <footer>
-    <div>
-      © <span id="year"></span> The Hive DayZ Community
-    </div>
-
+    <div>© <span id="year"></span> The Hive DayZ Community</div>
     <div class="social-links">
-      <a href="https://discord.gg/thehivedayz" target="_blank" rel="noopener">Discord</a>
-      |
+      <a href="https://discord.gg/thehivedayz" target="_blank" rel="noopener">Discord</a> |
       <a href="https://www.youtube.com/@TheHiveDayZ" target="_blank" rel="noopener">YouTube</a>
     </div>
   </footer>
 
   <!-- Scripts -->
   <script src="app.js"></script>
+  <script>
+    // Sidebar toggle
+    const toggle = document.querySelector('.menu-toggle');
+    const sidebar = document.getElementById('sidebar');
+    const overlay = document.getElementById('overlay');
 
+    toggle.addEventListener('click', () => {
+      const expanded = toggle.getAttribute('aria-expanded') === 'true';
+      toggle.setAttribute('aria-expanded', !expanded);
+      sidebar.classList.toggle('open');
+      overlay.classList.toggle('show');
+    });
+    overlay.addEventListener('click', () => {
+      sidebar.classList.remove('open');
+      overlay.classList.remove('show');
+      toggle.setAttribute('aria-expanded', false);
+    });
+
+    // Scroll Animations
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting){
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15 });
+
+    document.querySelectorAll('section, .card').forEach(el => {
+      el.classList.add('animate');
+      observer.observe(el);
+    });
+
+    // Countdown pulse demo (simulate <1hr for demo)
+    const countdown = document.getElementById('countdown');
+    countdown.textContent = "00:45:32";
+    countdown.classList.add('warning');
+
+    // Set current year
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
