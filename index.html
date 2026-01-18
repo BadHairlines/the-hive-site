@@ -1,165 +1,126 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8">
   <title>The Hive – DayZ Community</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="The Hive DayZ Xbox server featuring PvP, base building, and weekend raids. Join our community today.">
-  <meta property="og:title" content="The Hive – DayZ Community">
-  <meta property="og:image" content="images/og-banner.jpg">
-  <meta property="og:type" content="website">
-
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600&family=Inter&display=swap" rel="stylesheet" />
-
-  <link rel="stylesheet" href="style.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600&family=Inter&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
-  <header class="topbar">
-    <button class="menu-toggle" aria-label="Open navigation menu" aria-expanded="false">
-      <span></span>
-      <span></span>
-      <span></span>
-    </button>
-    <div class="brand">THE HIVE</div>
-  </header>
+<!-- TOP BAR -->
+<header class="topbar">
+  <button class="menu-toggle" aria-label="Open menu">
+    <span></span><span></span><span></span>
+  </button>
+  <div class="brand">THE HIVE</div>
+</header>
 
-  <aside class="sidebar" id="sidebar">
-    <nav class="nav-links">
-      <a href="index.html" class="active">Home</a>
-      <a href="server.html">Our Servers</a>
-      <a href="rules.html">Rules</a>
-      <a href="#news">News</a>
-      <a href="#events">Events</a>
-      <a href="#gallery">Gallery</a>
-      <a href="https://discord.gg/thehivedayz" target="_blank" class="discord-btn" rel="noopener">
-        Discord
-      </a>
-    </nav>
-  </aside>
+<!-- SIDEBAR -->
+<aside class="sidebar" id="sidebar">
+  <nav class="nav-links">
+    <a href="index.html" class="active">Home</a>
+    <a href="server.html">Our Servers</a>
+    <a href="rules.html">Rules</a>
+    <a href="#news">News</a>
+    <a href="#events">Events</a>
+    <a href="#gallery">Gallery</a>
+    <a href="https://discord.gg/thehivedayz" target="_blank" class="discord-btn">Discord</a>
+  </nav>
+</aside>
 
-  <div class="overlay" id="overlay"></div>
+<!-- OVERLAY -->
+<div class="overlay" id="overlay"></div>
 
-  <main class="main-content">
+<!-- MAIN -->
+<main class="main-content">
 
-    <section class="hero">
-      <div class="hero-content">
-        <h1>THE HIVE</h1>
-        <p>Welcome to The Hive DayZ Community</p>
-        <span class="platform">BASE BUILDING • RAID WEEKENDS</span>
-        <div class="hero-buttons">
-          <a href="server.html" class="btn">Join Server</a>
-          <a href="https://discord.gg/thehivedayz" target="_blank" class="btn discord-btn" rel="noopener">Join Discord</a>
-        </div>
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1>THE HIVE</h1>
+      <p>Welcome to The Hive DayZ Community</p>
+      <span class="platform">BASE BUILDING • RAID WEEKENDS</span>
+      <div class="hero-buttons">
+        <a href="server.html" class="btn">Join Server</a>
+        <a href="https://discord.gg/thehivedayz" target="_blank" class="btn discord-btn">Join Discord</a>
       </div>
-    </section>
-
-    <section class="section">
-      <h2>Why Play The Hive?</h2>
-      <div class="features">
-        <div class="card">🔥 PvP / KOS</div>
-        <div class="card">🏗️ Base Building</div>
-        <div class="card">💣 Raid Weekends</div>
-        <div class="card">🛡️ Active Staff</div>
-      </div>
-    </section>
-
-    <section class="section">
-      <h2>Server Highlights</h2>
-      <div class="features">
-        <div class="card">🎮 Xbox</div>
-        <div class="card">⚔️ PvP / KOS</div>
-        <div class="card">🏗️ Base Building</div>
-        <div class="card">💣 Weekend Raids</div>
-      </div>
-    </section>
-
-    <section class="section" id="server-status">
-      <h2>Live Server Status</h2>
-      <div class="features">
-        <div class="card">Server: <span id="server-name">The Hive #1</span></div>
-        <div class="card">Players Online: <span id="player-count">Loading...</span></div>
-        <div class="card">Map: <span id="server-map">Chernarus</span></div>
-        <div class="card">Uptime: <span id="server-uptime">00:00</span></div>
-      </div>
-    </section>
-
-    <section class="section" id="next-event">
-      <h2>Next Event Countdown</h2>
-      <p>Event starts in: <strong><span id="countdown"></span></strong></p>
-    </section>
-
-    <section class="section" id="news">
-      <h2>Latest News</h2>
-      <div class="news-feed" id="news-feed"></div>
-    </section>
-
-    <section class="section" id="events">
-      <h2>Upcoming Events</h2>
-      <div class="features" id="events-feed"></div>
-    </section>
-
-    <section class="section" id="gallery">
-      <h2>Community Gallery</h2>
-      <div class="features gallery">
-        <div class="card"><img src="images/screenshot1.webp" alt="DayZ gameplay screenshot 1" loading="lazy"></div>
-        <div class="card"><img src="images/screenshot2.webp" alt="DayZ gameplay screenshot 2" loading="lazy"></div>
-        <div class="card"><img src="images/screenshot3.webp" alt="DayZ gameplay screenshot 3" loading="lazy"></div>
-        <div class="card"><img src="images/screenshot4.webp" alt="DayZ gameplay screenshot 4" loading="lazy"></div>
-      </div>
-    </section>
-
-  </main>
-
-  <a href="https://discord.gg/thehivedayz" class="mobile-cta">Join Discord</a>
-
-  <footer>
-    <div>© <span id="year"></span> The Hive DayZ Community</div>
-    <div class="social-links">
-      <a href="https://discord.gg/thehivedayz" target="_blank" rel="noopener">Discord</a> |
-      <a href="https://www.youtube.com/@TheHiveDayZ" target="_blank" rel="noopener">YouTube</a>
     </div>
-  </footer>
+  </section>
 
-  <script src="app.js"></script>
-  <script>
-    const toggle = document.querySelector('.menu-toggle');
-    const sidebar = document.getElementById('sidebar');
-    const overlay = document.getElementById('overlay');
+  <!-- WHY PLAY -->
+  <section>
+    <h2>Why Play The Hive?</h2>
+    <div class="features">
+      <div class="card">🔥 PvP / KOS</div>
+      <div class="card">🏗️ Base Building</div>
+      <div class="card">💣 Raid Weekends</div>
+      <div class="card">🛡️ Active Staff</div>
+    </div>
+  </section>
 
-    toggle.addEventListener('click', () => {
-      const expanded = toggle.getAttribute('aria-expanded') === 'true';
-      toggle.setAttribute('aria-expanded', !expanded);
-      sidebar.classList.toggle('open');
-      overlay.classList.toggle('show');
-    });
-    overlay.addEventListener('click', () => {
-      sidebar.classList.remove('open');
-      overlay.classList.remove('show');
-      toggle.setAttribute('aria-expanded', false);
-    });
+  <!-- SERVER HIGHLIGHTS -->
+  <section>
+    <h2>Server Highlights</h2>
+    <div class="features">
+      <div class="card">🎮 Xbox</div>
+      <div class="card">⚔️ PvP / KOS</div>
+      <div class="card">🏗️ Base Building</div>
+      <div class="card">💣 Weekend Raids</div>
+    </div>
+  </section>
 
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if(entry.isIntersecting){
-          entry.target.classList.add('visible');
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.15 });
+  <!-- LIVE SERVER STATUS -->
+  <section id="server-status">
+    <h2>Live Server Status</h2>
+    <div class="features">
+      <div class="card">Server: <span id="server-name">The Hive #1</span></div>
+      <div class="card">Players Online: <span id="player-count">Loading...</span></div>
+      <div class="card">Map: <span id="server-map">Chernarus</span></div>
+      <div class="card">Uptime: <span id="server-uptime">00:00</span></div>
+    </div>
+  </section>
 
-    document.querySelectorAll('section, .card').forEach(el => {
-      el.classList.add('animate');
-      observer.observe(el);
-    });
+  <!-- NEXT EVENT COUNTDOWN -->
+  <section id="next-event">
+    <h2>Next Event Countdown</h2>
+    <p>Event starts in: <span id="countdown"></span></p>
+  </section>
 
-    const countdown = document.getElementById('countdown');
-    countdown.textContent = "00:45:32";
-    countdown.classList.add('warning');
+  <!-- NEWS -->
+  <section id="news">
+    <h2>Latest News</h2>
+    <div class="news-feed" id="news-feed"></div>
+  </section>
 
-    document.getElementById('year').textContent = new Date().getFullYear();
-  </script>
+  <!-- EVENTS -->
+  <section id="events">
+    <h2>Upcoming Events</h2>
+    <div class="features" id="events-feed"></div>
+  </section>
+
+  <!-- GALLERY -->
+  <section id="gallery">
+    <h2>Community Gallery</h2>
+    <div class="features">
+      <div class="card"><img src="images/screenshot1.jpg" alt="Screenshot 1"></div>
+      <div class="card"><img src="images/screenshot2.jpg" alt="Screenshot 2"></div>
+      <div class="card"><img src="images/screenshot3.jpg" alt="Screenshot 3"></div>
+      <div class="card"><img src="images/screenshot4.jpg" alt="Screenshot 4"></div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div>© <span id="year"></span> The Hive DayZ Community</div>
+  <div class="social-links">
+    <a href="https://discord.gg/thehivedayz" target="_blank">Discord</a> |
+    <a href="https://www.youtube.com/@TheHiveDayZ" target="_blank">YouTube</a>
+  </div>
+</footer>
+
+<script src="app.js"></script>
 </body>
 </html>
