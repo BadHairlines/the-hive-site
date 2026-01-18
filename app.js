@@ -1,3 +1,4 @@
+/* ─── SIDEBAR TOGGLE ───────────────── */
 const btn = document.querySelector('.menu-toggle');
 const sidebar = document.getElementById('sidebar');
 const overlay = document.getElementById('overlay');
@@ -14,18 +15,21 @@ overlay.addEventListener('click', () => {
   overlay.classList.remove('show');
 });
 
+/* ─── FOOTER YEAR ───────────────── */
 document.getElementById('year').textContent = new Date().getFullYear();
 
+/* ─── FAKE SERVER STATUS ───────────────── */
 function updateServerStatus() {
   const maxPlayers = 50;
   const currentPlayers = Math.floor(Math.random() * maxPlayers);
-  const uptime = `${Math.floor(Math.random() * 24)}h ${Math.floor(Math.random() * 60)}m`;
+  const uptime = '12h 34m';
   document.getElementById('player-count').textContent = `${currentPlayers}/${maxPlayers}`;
   document.getElementById('server-uptime').textContent = uptime;
 }
 updateServerStatus();
 setInterval(updateServerStatus, 10000);
 
+/* ─── COUNTDOWN ───────────────── */
 function countdown() {
   const eventDate = new Date("2026-01-20T20:00:00").getTime();
   const now = new Date().getTime();
@@ -34,7 +38,6 @@ function countdown() {
   const countdownEl = document.getElementById('countdown');
   if (diff < 0) {
     countdownEl.textContent = "Event Live!";
-    countdownEl.classList.remove('warning');
     return;
   }
 
@@ -44,23 +47,18 @@ function countdown() {
   const seconds = Math.floor((diff % (1000*60)) / 1000);
 
   countdownEl.textContent = `${days}d ${hours}h ${minutes}m ${seconds}s`;
-
-  if (diff < 1000*60*60) {
-    countdownEl.classList.add('warning');
-  } else {
-    countdownEl.classList.remove('warning');
-  }
 }
 countdown();
 setInterval(countdown, 1000);
 
+/* ─── LOAD NEWS ───────────────── */
 fetch('news.json')
   .then(res => res.json())
   .then(news => {
     const feed = document.getElementById('news-feed');
     news.reverse().forEach(item => {
       const card = document.createElement('div');
-      card.className = 'card animate';
+      card.className = 'card';
       card.innerHTML = `
         <h3>${item.title}</h3>
         <p>${item.content}</p>
@@ -70,13 +68,14 @@ fetch('news.json')
     });
   });
 
+/* ─── LOAD EVENTS ───────────────── */
 fetch('events.json')
   .then(res => res.json())
   .then(events => {
     const feed = document.getElementById('events-feed');
     events.forEach(event => {
       const card = document.createElement('div');
-      card.className = 'card animate';
+      card.className = 'card';
       card.innerHTML = `
         <h3>${event.title}</h3>
         <p>${event.description}</p>
@@ -85,31 +84,3 @@ fetch('events.json')
       feed.appendChild(card);
     });
   });
-
-const animatedEls = document.querySelectorAll('.animate');
-function handleScrollAnimation() {
-  const triggerBottom = window.innerHeight * 0.9;
-  animatedEls.forEach(el => {
-    const top = el.getBoundingClientRect().top;
-    if (top < triggerBottom) {
-      el.classList.add('visible');
-    }
-  });
-}
-window.addEventListener('scroll', handleScrollAnimation);
-handleScrollAnimation();
-
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-  anchor.addEventListener('click', function(e) {
-    e.preventDefault();
-    document.querySelector(this.getAttribute('href'))
-            .scrollIntoView({ behavior: 'smooth' });
-  });
-});
-
-const mobileCTA = document.createElement('a');
-mobileCTA.href = "https://discord.gg/thehivedayz";
-mobileCTA.target = "_blank";
-mobileCTA.className = "mobile-cta";
-mobileCTA.textContent = "Join Discord";
-document.body.appendChild(mobileCTA);
