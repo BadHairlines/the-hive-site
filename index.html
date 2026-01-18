@@ -9,17 +9,14 @@
   <meta property="og:image" content="images/og-banner.jpg">
   <meta property="og:type" content="website">
 
-  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600&family=Inter&display=swap" rel="stylesheet" />
 
-  <!-- Styles -->
   <link rel="stylesheet" href="style.css" />
 </head>
 
 <body>
 
-  <!-- Top Bar -->
   <header class="topbar">
     <button class="menu-toggle" aria-label="Open navigation menu" aria-expanded="false">
       <span></span>
@@ -29,7 +26,6 @@
     <div class="brand">THE HIVE</div>
   </header>
 
-  <!-- Sidebar Navigation -->
   <aside class="sidebar" id="sidebar">
     <nav class="nav-links">
       <a href="index.html" class="active">Home</a>
@@ -44,13 +40,10 @@
     </nav>
   </aside>
 
-  <!-- Overlay -->
   <div class="overlay" id="overlay"></div>
 
-  <!-- Main Content -->
   <main class="main-content">
 
-    <!-- Hero -->
     <section class="hero">
       <div class="hero-content">
         <h1>THE HIVE</h1>
@@ -63,7 +56,6 @@
       </div>
     </section>
 
-    <!-- Why Play -->
     <section class="section">
       <h2>Why Play The Hive?</h2>
       <div class="features">
@@ -74,7 +66,6 @@
       </div>
     </section>
 
-    <!-- Server Highlights -->
     <section class="section">
       <h2>Server Highlights</h2>
       <div class="features">
@@ -85,7 +76,6 @@
       </div>
     </section>
 
-    <!-- Live Server Status -->
     <section class="section" id="server-status">
       <h2>Live Server Status</h2>
       <div class="features">
@@ -96,25 +86,21 @@
       </div>
     </section>
 
-    <!-- Next Event -->
     <section class="section" id="next-event">
       <h2>Next Event Countdown</h2>
       <p>Event starts in: <strong><span id="countdown"></span></strong></p>
     </section>
 
-    <!-- News -->
     <section class="section" id="news">
       <h2>Latest News</h2>
       <div class="news-feed" id="news-feed"></div>
     </section>
 
-    <!-- Events -->
     <section class="section" id="events">
       <h2>Upcoming Events</h2>
       <div class="features" id="events-feed"></div>
     </section>
 
-    <!-- Gallery -->
     <section class="section" id="gallery">
       <h2>Community Gallery</h2>
       <div class="features gallery">
@@ -127,10 +113,8 @@
 
   </main>
 
-  <!-- Sticky Mobile CTA -->
   <a href="https://discord.gg/thehivedayz" class="mobile-cta">Join Discord</a>
 
-  <!-- Footer -->
   <footer>
     <div>© <span id="year"></span> The Hive DayZ Community</div>
     <div class="social-links">
@@ -139,10 +123,8 @@
     </div>
   </footer>
 
-  <!-- Scripts -->
   <script src="app.js"></script>
   <script>
-    // Sidebar toggle
     const toggle = document.querySelector('.menu-toggle');
     const sidebar = document.getElementById('sidebar');
     const overlay = document.getElementById('overlay');
@@ -159,7 +141,6 @@
       toggle.setAttribute('aria-expanded', false);
     });
 
-    // Scroll Animations
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if(entry.isIntersecting){
@@ -174,12 +155,10 @@
       observer.observe(el);
     });
 
-    // Countdown pulse demo (simulate <1hr for demo)
     const countdown = document.getElementById('countdown');
     countdown.textContent = "00:45:32";
     countdown.classList.add('warning');
 
-    // Set current year
     document.getElementById('year').textContent = new Date().getFullYear();
   </script>
 </body>
