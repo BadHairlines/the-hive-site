@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Admin – The Hive</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600&family=Inter&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #f9f9f9;
+      padding: 40px 20px;
+    }
+    h1 {
+      font-family: 'Oswald', sans-serif;
+      color: var(--hive-accent);
+      text-align: center;
+      margin-bottom: 40px;
+    }
+    form {
+      max-width: 600px;
+      margin: 0 auto;
+      background: #fff;
+      padding: 30px;
+      border-radius: 14px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    label {
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+    input, select, textarea, button {
+      padding: 10px 14px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      font-size: 1rem;
+      font-family: inherit;
+      width: 100%;
+    }
+    textarea {
+      resize: vertical;
+      min-height: 100px;
+    }
+    button {
+      background: var(--hive-dark);
+      color: #fff;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.2s;
+    }
+    button:hover {
+      background: var(--hive-accent);
+      transform: translateY(-2px);
+    }
+    .note {
+      font-size: 0.85rem;
+      color: #555;
+    }
+    .back-link {
+      display: block;
+      text-align: center;
+      margin-top: 30px;
+      color: var(--hive-accent);
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Admin Panel – Add Post</h1>
+
+  <form action="add_post.php" method="POST">
+    <label for="type">Type</label>
+    <select name="type" id="type" required>
+      <option value="news">News</option>
+      <option value="events">Event</option>
+    </select>
+
+    <label for="title">Title</label>
+    <input type="text" name="title" id="title" placeholder="Enter title" required>
+
+    <label for="date">Date</label>
+    <input type="date" name="date" id="date" required>
+    <p class="note">For events, set the start date. For news, just choose the post date.</p>
+
+    <label for="content">Content / Description</label>
+    <textarea name="content" id="content" placeholder="Enter content or description" required></textarea>
+
+    <button type="submit">Add Post</button>
+  </form>
+
+  <a href="index.html" class="back-link">← Back to Home</a>
+
+</body>
+</html>
