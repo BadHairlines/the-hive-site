@@ -1,6 +1,3 @@
-/* ─────────────────────────────
-   SIDEBAR TOGGLE
-───────────────────────────── */
 const btn = document.querySelector('.menu-toggle');
 const sidebar = document.getElementById('sidebar');
 const overlay = document.getElementById('overlay');
@@ -17,14 +14,8 @@ overlay.addEventListener('click', () => {
   overlay.classList.remove('show');
 });
 
-/* ─────────────────────────────
-   FOOTER YEAR
-───────────────────────────── */
 document.getElementById('year').textContent = new Date().getFullYear();
 
-/* ─────────────────────────────
-   FAKE SERVER STATUS
-───────────────────────────── */
 function updateServerStatus() {
   const maxPlayers = 50;
   const currentPlayers = Math.floor(Math.random() * maxPlayers);
@@ -35,9 +26,6 @@ function updateServerStatus() {
 updateServerStatus();
 setInterval(updateServerStatus, 10000);
 
-/* ─────────────────────────────
-   COUNTDOWN TIMER
-───────────────────────────── */
 function countdown() {
   const eventDate = new Date("2026-01-20T20:00:00").getTime();
   const now = new Date().getTime();
@@ -57,7 +45,6 @@ function countdown() {
 
   countdownEl.textContent = `${days}d ${hours}h ${minutes}m ${seconds}s`;
 
-  // Countdown warning if under 1 hour
   if (diff < 1000*60*60) {
     countdownEl.classList.add('warning');
   } else {
@@ -67,9 +54,6 @@ function countdown() {
 countdown();
 setInterval(countdown, 1000);
 
-/* ─────────────────────────────
-   LOAD NEWS
-───────────────────────────── */
 fetch('news.json')
   .then(res => res.json())
   .then(news => {
@@ -86,9 +70,6 @@ fetch('news.json')
     });
   });
 
-/* ─────────────────────────────
-   LOAD EVENTS
-───────────────────────────── */
 fetch('events.json')
   .then(res => res.json())
   .then(events => {
@@ -105,9 +86,6 @@ fetch('events.json')
     });
   });
 
-/* ─────────────────────────────
-   SCROLL ANIMATIONS
-───────────────────────────── */
 const animatedEls = document.querySelectorAll('.animate');
 function handleScrollAnimation() {
   const triggerBottom = window.innerHeight * 0.9;
@@ -119,11 +97,8 @@ function handleScrollAnimation() {
   });
 }
 window.addEventListener('scroll', handleScrollAnimation);
-handleScrollAnimation(); // trigger on load
+handleScrollAnimation();
 
-/* ─────────────────────────────
-   SMOOTH SCROLL FOR ANCHORS
-───────────────────────────── */
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   anchor.addEventListener('click', function(e) {
     e.preventDefault();
@@ -132,9 +107,6 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   });
 });
 
-/* ─────────────────────────────
-   MOBILE STICKY CTA
-───────────────────────────── */
 const mobileCTA = document.createElement('a');
 mobileCTA.href = "https://discord.gg/thehivedayz";
 mobileCTA.target = "_blank";
