@@ -11,8 +11,9 @@
 
 body {
   font-family: 'Inter', sans-serif;
-  background: #f9f9f9;
-  color: #333;
+  background: radial-gradient(circle at top, #fff8e6 0%, #f6f2e9 45%, #f3f3f3 100%);
+  color: #2b2b2b;
+  line-height: 1.6;
 }
 
 a { text-decoration: none; color: inherit; }
@@ -26,9 +27,9 @@ a { text-decoration: none; color: inherit; }
   align-items: center;
   gap: 16px;
   padding: 0 24px;
-  background: rgba(255,255,255,0.9);
+  background: rgba(255,255,255,0.92);
   backdrop-filter: blur(10px);
-  border-bottom: 1px solid #e0e0e0;
+  border-bottom: 1px solid rgba(224,224,224,0.6);
   z-index: 2000;
 }
 
@@ -88,16 +89,18 @@ a { text-decoration: none; color: inherit; }
 .nav-links a {
   padding: 12px;
   border-radius: 8px;
-  background: #f0f0f0;
+  background: #f5f5f5;
   font-weight: 600;
   transition: 0.2s;
 }
 
 .nav-links a:hover,
-.nav-links a.active {
+.nav-links a.active,
+.nav-links a:focus-visible {
   background: var(--hive-main);
   color: var(--hive-text);
   transform: translateX(4px);
+  outline: none;
 }
 
 .discord-btn {
@@ -123,6 +126,8 @@ a { text-decoration: none; color: inherit; }
 /* ─── MAIN ─────────────────────────────── */
 .main-content {
   padding: 40px 60px;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 /* ─── HERO ─────────────────────────────── */
@@ -134,21 +139,25 @@ a { text-decoration: none; color: inherit; }
   background: linear-gradient(135deg, var(--hive-light), var(--hive-dark));
   border-radius: 14px;
   margin-bottom: 80px;
+  box-shadow: 0 18px 40px rgba(0,0,0,0.12);
 }
 
 .hero-content {
   text-align: center;
+  max-width: 640px;
 }
 
 .hero h1 {
   font-family: 'Oswald', sans-serif;
   font-size: 4rem;
+  color: #402500;
 }
 
 .platform {
   margin-top: 12px;
   font-weight: 600;
   color: var(--hive-accent);
+  letter-spacing: 1px;
 }
 
 /* ─── SECTIONS ─────────────────────────── */
@@ -162,6 +171,8 @@ h2 {
   color: var(--hive-accent);
   margin-bottom: 40px;
   font-size: 2.4rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
 /* ─── CARDS ────────────────────────────── */
@@ -175,13 +186,22 @@ h2 {
   padding: 26px;
   background: #fff;
   border-radius: 14px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+  border: 1px solid rgba(255,184,77,0.18);
+  box-shadow: 0 12px 24px rgba(0,0,0,0.08);
   font-weight: 600;
   transition: 0.25s;
 }
 
 .card:hover {
   transform: translateY(-6px);
+  box-shadow: 0 18px 30px rgba(0,0,0,0.12);
+}
+
+.card img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  display: block;
 }
 
 /* ─── HERO BUTTONS ───────────────────────── */
@@ -199,11 +219,17 @@ h2 {
   font-weight: 600;
   border-radius: 8px;
   transition: 0.2s;
+  box-shadow: 0 12px 24px rgba(255,184,77,0.25);
 }
 
 .btn:hover {
   background: var(--hive-accent);
   transform: translateY(-2px);
+}
+
+.btn:focus-visible {
+  outline: 3px solid rgba(244,162,97,0.5);
+  outline-offset: 2px;
 }
 
 /* ─── EVENTS / COUNTDOWN ─────────────────── */
@@ -218,7 +244,7 @@ footer {
   padding: 30px;
   text-align: center;
   color: #555;
-  border-top: 1px solid #e0e0e0;
+  border-top: 1px solid rgba(224,224,224,0.7);
 }
 
 footer .social-links a {
@@ -232,4 +258,5 @@ footer .social-links a {
   .main-content { padding: 30px 20px; }
   .hero h1 { font-size: 3rem; }
   .hero-buttons { flex-direction: column; }
+  section { margin-bottom: 70px; }
 }
