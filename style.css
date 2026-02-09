@@ -482,6 +482,92 @@ h2 {
   color: var(--text-muted);
 }
 
+/* ─── SNAPSHOT ───────────────────────── */
+.snapshot-section {
+  text-align: center;
+}
+
+.snapshot-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 24px;
+}
+
+.snapshot-card {
+  text-align: left;
+  padding: 24px;
+  border-radius: 14px;
+  background: rgba(26,26,31,0.85);
+  border: 1px solid rgba(255,184,77,0.2);
+  box-shadow: 0 14px 28px rgba(0,0,0,0.35);
+}
+
+.snapshot-card ul {
+  list-style: none;
+  margin-top: 16px;
+  display: grid;
+  gap: 8px;
+  color: var(--text-muted);
+}
+
+/* ─── PULSE ─────────────────────────── */
+.pulse-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 24px;
+}
+
+.pulse-card {
+  text-align: left;
+  padding: 24px;
+  border-radius: 14px;
+  background: linear-gradient(160deg, rgba(255,223,127,0.1), rgba(26,26,31,0.9));
+  border: 1px solid rgba(255,184,77,0.2);
+  box-shadow: 0 14px 28px rgba(0,0,0,0.35);
+}
+
+.pulse-meta {
+  display: inline-flex;
+  margin-top: 16px;
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: rgba(255,184,77,0.15);
+  color: var(--text-main);
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+/* ─── GUIDE ─────────────────────────── */
+.guide-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 24px;
+}
+
+.guide-card {
+  text-align: left;
+  padding: 26px;
+  border-radius: 16px;
+  background: var(--bg-card);
+  border: 1px solid rgba(255,184,77,0.18);
+  box-shadow: 0 12px 24px rgba(0,0,0,0.35);
+  display: grid;
+  gap: 12px;
+}
+
+.step-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 14px;
+  background: rgba(255,184,77,0.2);
+  color: var(--hive-main);
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
 .discord-section {
   text-align: center;
 }
@@ -735,10 +821,19 @@ footer .social-links a {
 /* ─── MOBILE ───────────────────────────── */
 @media (max-width: 768px) {
   .main-content { padding: 30px 20px; }
+  .hero { height: auto; padding: 60px 0; margin-bottom: 70px; }
+  .hero-inner { text-align: left; }
+  .hero-stats { grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); }
   .status-pill { display: none; }
   .topbar-links { display: none; }
   .hero h1 { font-size: 3rem; }
   .hero-buttons { flex-direction: column; }
+  .snapshot-card,
+  .pulse-card,
+  .guide-card {
+    padding: 20px;
+  }
+  .events-highlight { padding: 20px; }
   .page-hero .hero-inner { text-align: center; }
   .page-hero .hero-buttons { justify-content: center; }
   section { margin-bottom: 70px; }
