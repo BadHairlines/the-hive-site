@@ -4,6 +4,8 @@ const sidebar = document.getElementById('sidebar');
 const overlay = document.getElementById('overlay');
 const adminForm = document.querySelector('[data-admin-form]');
 const adminMessage = document.querySelector('[data-admin-message]');
+const postForm = document.getElementById('postForm');
+const galleryForm = document.getElementById('galleryForm');
 
 if (btn && sidebar && overlay) {
   btn.addEventListener('click', () => {
@@ -53,6 +55,65 @@ if (adminForm) {
     input.focus();
     input.select();
   });
+}
+
+if (postForm) {
+  const preview = document.getElementById('preview');
+  const typeInput = document.getElementById('type');
+  const titleInput = document.getElementById('title');
+  const dateInput = document.getElementById('date');
+  const contentInput = document.getElementById('content');
+
+  const updatePreview = () => {
+    if (!preview) {
+      return;
+    }
+    preview.innerHTML = '';
+    const card = document.createElement('div');
+    card.className = 'preview-card';
+    card.innerHTML = `
+      <h3>${titleInput?.value || 'Post Title'}</h3>
+      <p>${contentInput?.value || 'Post content will appear here.'}</p>
+      <small>${typeInput?.value === 'news' ? 'News' : 'Event'} • ${dateInput?.value || 'Date'}</small>
+    `;
+    preview.appendChild(card);
+  };
+
+  [typeInput, titleInput, dateInput, contentInput].forEach((input) => {
+    if (input) {
+      input.addEventListener('input', updatePreview);
+    }
+  });
+  updatePreview();
+}
+
+if (galleryForm) {
+  const galleryPreview = document.getElementById('gallery-preview');
+  const galleryTitle = document.getElementById('gallery-title');
+  const galleryDescription = document.getElementById('gallery-description');
+  const galleryImage = document.getElementById('gallery-image');
+
+  const updateGalleryPreview = () => {
+    if (!galleryPreview) {
+      return;
+    }
+    galleryPreview.innerHTML = '';
+    const card = document.createElement('div');
+    card.className = 'preview-card';
+    card.innerHTML = `
+      <img src=\"${galleryImage?.value || 'https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=900&q=80'}\" alt=\"${galleryTitle?.value || 'Gallery preview'}\" />
+      <h3>${galleryTitle?.value || 'Gallery Title'}</h3>
+      <p>${galleryDescription?.value || 'Gallery caption will appear here.'}</p>
+    `;
+    galleryPreview.appendChild(card);
+  };
+
+  [galleryTitle, galleryDescription, galleryImage].forEach((input) => {
+    if (input) {
+      input.addEventListener('input', updateGalleryPreview);
+    }
+  });
+  updateGalleryPreview();
 }
 
 /* ─── FOOTER YEAR ───────────────── */
@@ -142,6 +203,26 @@ fetch('events.json')
         <h3>${event.title}</h3>
         <p>${event.description}</p>
         <p><strong>${new Date(event.date).toLocaleString()}</strong></p>
+      `;
+      feed.appendChild(card);
+    });
+  });
+
+/* ─── LOAD GALLERY ───────────────── */
+fetch('gallery.json')
+  .then(res => res.json())
+  .then(items => {
+    const feed = document.getElementById('gallery-feed');
+    if (!feed) {
+      return;
+    }
+    items.forEach(item => {
+      const card = document.createElement('div');
+      card.className = 'gallery-card';
+      card.innerHTML = `
+        <img src=\"${item.image}\" alt=\"${item.title}\" />
+        <span>${item.title}</span>
+        <p>${item.description}</p>
       `;
       feed.appendChild(card);
     });
