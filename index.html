@@ -15,6 +15,12 @@
     <span></span><span></span><span></span>
   </button>
   <div class="brand">THE HIVE</div>
+  <nav class="topbar-links">
+    <a href="#servers">Servers</a>
+    <a href="#news">News</a>
+    <a href="#events">Events</a>
+    <a href="#gallery">Gallery</a>
+  </nav>
 </header>
 
 <!-- SIDEBAR -->
@@ -39,13 +45,15 @@
   <!-- HERO -->
   <section class="hero hero-dark">
     <div class="hero-inner">
+      <span class="hero-tag">Hardcore Xbox Survival</span>
       <h1>THE HIVE DAYZ</h1>
-      <p>Hardcore PvP • Xbox • Base Building</p>
+      <p>High-stakes PvP with curated loot, weekend raids, and a community that lives for the grind.</p>
 
       <div class="hero-stats">
         <div><span id="player-count">0/50</span><small>Players</small></div>
         <div><span>Chernarus</span><small>Map</small></div>
         <div><span>Xbox</span><small>Platform</small></div>
+        <div><span id="server-uptime">--</span><small>Server Uptime</small></div>
       </div>
 
       <div class="hero-buttons">
@@ -56,7 +64,7 @@
   </section>
 
   <!-- SERVERS -->
-  <section class="section-dark">
+  <section class="section-dark" id="servers">
     <h2>Our Servers</h2>
 
     <div class="server-grid">
@@ -74,17 +82,72 @@
   </section>
 
   <!-- NEWS -->
-  <section class="section">
+  <section class="section" id="news">
     <h2>Latest Updates</h2>
     <div class="news-feed" id="news-feed"></div>
   </section>
 
   <!-- EVENTS -->
-  <section class="section-dark">
+  <section class="section-dark" id="events">
     <h2>Upcoming Events</h2>
     <div class="features" id="events-feed"></div>
   </section>
 
+  <!-- COMMUNITY -->
+  <section class="section">
+    <h2>Why Survivors Stay</h2>
+    <div class="features">
+      <div class="card">
+        <h3>Balanced Loot Economy</h3>
+        <p>Custom loot tiers keep firefights tense while rewarding explorers who hit the hot zones.</p>
+      </div>
+      <div class="card">
+        <h3>Active Moderation</h3>
+        <p>Staff are online daily, keeping the server fair, fast, and friendly for every playstyle.</p>
+      </div>
+      <div class="card">
+        <h3>Weekend Raid Windows</h3>
+        <p>Plan with your squad and defend your base during scheduled raid windows.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALLERY -->
+  <section class="section-dark" id="gallery">
+    <h2>Moments from The Hive</h2>
+    <div class="gallery-grid">
+      <div class="gallery-card">
+        <span>Coastal Patrol</span>
+        <p>Fresh spawns. Big risks.</p>
+      </div>
+      <div class="gallery-card">
+        <span>Airfield Clash</span>
+        <p>High-tier loot, higher stakes.</p>
+      </div>
+      <div class="gallery-card">
+        <span>Base Night</span>
+        <p>Hold the line until sunrise.</p>
+      </div>
+      <div class="gallery-card">
+        <span>Convoy Drop</span>
+        <p>Loot drops that draw every squad.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section cta-section">
+    <div class="cta-card">
+      <div>
+        <h2>Ready to Drop In?</h2>
+        <p>Grab the server info, meet the crew, and gear up for your next run.</p>
+      </div>
+      <div class="cta-actions">
+        <a href="server.html" class="btn primary">Server Details</a>
+        <a href="https://discord.gg/thehivedayz" class="btn outline" target="_blank">Join Discord</a>
+      </div>
+    </div>
+  </section>
 </main>
 
 <footer>
