@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>The Hive – Gallery</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600&family=Inter&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to main content</a>
+
+<header class="topbar">
+  <button class="menu-toggle" aria-label="Open menu" aria-controls="sidebar" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+  <div class="brand">THE HIVE</div>
+  <div class="status-pill">
+    <span class="status-dot"></span>
+    Live Status
+  </div>
+  <nav class="topbar-links">
+    <a href="server.html">Servers</a>
+    <a href="news.html">News</a>
+    <a href="events.html">Events</a>
+    <a href="gallery.html">Gallery</a>
+  </nav>
+</header>
+
+<aside class="sidebar" id="sidebar">
+  <nav class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="server.html">Our Servers</a>
+    <a href="rules.html">Rules</a>
+    <a href="news.html">News</a>
+    <a href="events.html">Events</a>
+    <a href="gallery.html" class="active">Gallery</a>
+    <a href="https://discord.gg/thehivedayz" target="_blank" class="discord-btn">Discord</a>
+  </nav>
+  <div class="sidebar-footer">
+    <form class="admin-form" data-admin-form data-admin-passcode="hiveadmin">
+      <label class="admin-note" for="admin-passcode">Admin access</label>
+      <input type="password" id="admin-passcode" name="admin-passcode" placeholder="Enter passcode" autocomplete="current-password" required>
+      <button type="submit">Admin Login</button>
+      <span class="admin-message" data-admin-message></span>
+    </form>
+  </div>
+</aside>
+
+<div class="overlay" id="overlay"></div>
+
+<main class="main-content" id="main">
+  <section class="hero page-hero">
+    <div class="hero-inner">
+      <span class="hero-tag">Community Moments</span>
+      <h1>Hive Gallery</h1>
+      <p>Snapshots from raids, convoys, and base builds across Chernarus.</p>
+      <div class="hero-buttons">
+        <a href="https://discord.gg/thehivedayz" target="_blank" class="btn primary">Submit a Clip</a>
+        <a href="news.html" class="btn outline">Weekly Recap</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-dark">
+    <h2>Featured Moments</h2>
+    <div class="gallery-grid" id="gallery-feed"></div>
+  </section>
+
+  <section class="section">
+    <h2>Share Your Story</h2>
+    <div class="detail-grid">
+      <div class="detail-card">
+        <h3>Tag Your Squad</h3>
+        <p>Send clips with your faction name and we'll shout you out in the weekly recap.</p>
+      </div>
+      <div class="detail-card">
+        <h3>Highlight Reels</h3>
+        <p>Top submissions get featured on YouTube with your gamer tag.</p>
+      </div>
+      <div class="detail-card">
+        <h3>Behind the Scenes</h3>
+        <p>We love base builds, map routes, and squad planning boards.</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div>© <span id="year"></span> The Hive DayZ Community</div>
+  <div class="social-links">
+    <a href="https://discord.gg/thehivedayz" target="_blank">Discord</a> |
+    <a href="https://www.youtube.com/@TheHiveDayZ" target="_blank">YouTube</a>
+  </div>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>
