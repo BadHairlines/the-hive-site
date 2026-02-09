@@ -2,44 +2,83 @@
 const btn = document.querySelector('.menu-toggle');
 const sidebar = document.getElementById('sidebar');
 const overlay = document.getElementById('overlay');
+const adminForm = document.querySelector('[data-admin-form]');
+const adminMessage = document.querySelector('[data-admin-message]');
 
-btn.addEventListener('click', () => {
-  btn.classList.toggle('active');
-  sidebar.classList.toggle('open');
-  overlay.classList.toggle('show');
-  const isOpen = sidebar.classList.contains('open');
-  btn.setAttribute('aria-expanded', String(isOpen));
-});
+if (btn && sidebar && overlay) {
+  btn.addEventListener('click', () => {
+    btn.classList.toggle('active');
+    sidebar.classList.toggle('open');
+    overlay.classList.toggle('show');
+    const isOpen = sidebar.classList.contains('open');
+    btn.setAttribute('aria-expanded', String(isOpen));
+  });
 
-overlay.addEventListener('click', () => {
-  btn.classList.remove('active');
-  sidebar.classList.remove('open');
-  overlay.classList.remove('show');
-  btn.setAttribute('aria-expanded', 'false');
-});
-
-document.addEventListener('keydown', (event) => {
-  if (event.key === 'Escape') {
+  overlay.addEventListener('click', () => {
     btn.classList.remove('active');
     sidebar.classList.remove('open');
     overlay.classList.remove('show');
     btn.setAttribute('aria-expanded', 'false');
-  }
-});
+  });
+
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape') {
+      btn.classList.remove('active');
+      sidebar.classList.remove('open');
+      overlay.classList.remove('show');
+      btn.setAttribute('aria-expanded', 'false');
+    }
+  });
+}
+
+if (adminForm) {
+  adminForm.addEventListener('submit', (event) => {
+    event.preventDefault();
+    const input = adminForm.querySelector('input[type="password"]');
+    if (!input) {
+      return;
+    }
+    const entered = input.value.trim();
+    const expected = adminForm.dataset.adminPasscode || '';
+    if (entered && entered === expected) {
+      if (adminMessage) {
+        adminMessage.textContent = 'Access granted. Redirecting...';
+      }
+      window.location.href = 'admin.html';
+      return;
+    }
+    if (adminMessage) {
+      adminMessage.textContent = 'Incorrect passcode. Try again.';
+    }
+    input.focus();
+    input.select();
+  });
+}
 
 /* ─── FOOTER YEAR ───────────────── */
-document.getElementById('year').textContent = new Date().getFullYear();
+const yearEl = document.getElementById('year');
+if (yearEl) {
+  yearEl.textContent = new Date().getFullYear();
+}
 
 /* ─── FAKE SERVER STATUS ───────────────── */
 function updateServerStatus() {
   const maxPlayers = 50;
   const currentPlayers = Math.floor(Math.random() * maxPlayers);
   const uptime = '12h 34m';
-  document.getElementById('player-count').textContent = `${currentPlayers}/${maxPlayers}`;
-  document.getElementById('server-uptime').textContent = uptime;
+  const playerCountEl = document.getElementById('player-count');
+  const uptimeEl = document.getElementById('server-uptime');
+  if (playerCountEl) {
+    playerCountEl.textContent = `${currentPlayers}/${maxPlayers}`;
+  }
+  if (uptimeEl) {
+    uptimeEl.textContent = uptime;
+  }
 }
 updateServerStatus();
-setInterval(updateServerStatus, 10000);
+if (document.getElementById('player-count') || document.getElementById('server-uptime')) {
+  setInterval(updateServerStatus, 10000);
+}
 
 /* ─── COUNTDOWN ───────────────── */
 function countdown() {
@@ -48,6 +87,9 @@ function countdown() {
   const diff = eventDate - now;
 
   const countdownEl = document.getElementById('countdown');
+  if (!countdownEl) {
+    return;
+  }
   if (diff < 0) {
     countdownEl.textContent = "Event Live!";
     return;
@@ -61,13 +103,18 @@ function countdown() {
   countdownEl.textContent = `${days}d ${hours}h ${minutes}m ${seconds}s`;
 }
 countdown();
-setInterval(countdown, 1000);
+if (document.getElementById('countdown')) {
+  setInterval(countdown, 1000);
+}
 
 /* ─── LOAD NEWS ───────────────── */
 fetch('news.json')
   .then(res => res.json())
   .then(news => {
     const feed = document.getElementById('news-feed');
+    if (!feed) {
+      return;
+    }
     news.reverse().forEach(item => {
       const card = document.createElement('div');
       card.className = 'card';
@@ -85,6 +132,9 @@ fetch('events.json')
   .then(res => res.json())
   .then(events => {
     const feed = document.getElementById('events-feed');
+    if (!feed) {
+      return;
+    }
     events.forEach(event => {
       const card = document.createElement('div');
       card.className = 'card';

@@ -144,6 +144,8 @@ a { text-decoration: none; color: inherit; }
   border-right: 1px solid rgba(255,255,255,0.08);
   transition: transform 0.35s cubic-bezier(.4,0,.2,1);
   z-index: 1500;
+  display: flex;
+  flex-direction: column;
 }
 
 .sidebar.open { transform: translateX(260px); }
@@ -152,6 +154,7 @@ a { text-decoration: none; color: inherit; }
   display: flex;
   flex-direction: column;
   gap: 14px;
+  flex: 1;
 }
 
 .nav-links a {
@@ -173,6 +176,51 @@ a { text-decoration: none; color: inherit; }
 }
 
 .discord-btn { color: var(--hive-accent); }
+
+.sidebar-footer {
+  margin-top: auto;
+  display: grid;
+  gap: 10px;
+}
+
+.admin-form {
+  display: grid;
+  gap: 10px;
+}
+
+.admin-form input {
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid rgba(255,255,255,0.12);
+  background: #121214;
+  color: var(--text-main);
+  font-size: 0.9rem;
+}
+
+.admin-form button {
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: none;
+  background: var(--hive-accent);
+  color: #000;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.admin-form button:hover {
+  transform: translateY(-1px);
+}
+
+.admin-note {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+.admin-message {
+  font-size: 0.8rem;
+  color: var(--hive-main);
+}
 
 /* ─── OVERLAY ───────────────────────────── */
 .overlay {
@@ -205,6 +253,20 @@ a { text-decoration: none; color: inherit; }
   border-radius: 18px;
   margin-bottom: 100px;
   box-shadow: 0 30px 80px rgba(0,0,0,0.55);
+}
+
+.page-hero {
+  height: 60vh;
+  margin-bottom: 80px;
+}
+
+.page-hero .hero-inner {
+  text-align: left;
+}
+
+.page-hero .hero-buttons {
+  justify-content: flex-start;
+  flex-wrap: wrap;
 }
 
 .hero-inner {
@@ -274,6 +336,48 @@ h2 {
   font-size: 2.4rem;
   text-transform: uppercase;
   letter-spacing: 1px;
+}
+
+/* ─── DETAIL LAYOUTS ───────────────────── */
+.detail-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 24px;
+  text-align: left;
+}
+
+.detail-card {
+  padding: 26px;
+  border-radius: 14px;
+  background: rgba(26,26,31,0.9);
+  border: 1px solid rgba(255,184,77,0.18);
+  box-shadow: 0 12px 24px rgba(0,0,0,0.35);
+}
+
+.detail-card h3 { margin-bottom: 12px; }
+
+.rule-list {
+  list-style: none;
+  display: grid;
+  gap: 10px;
+  color: var(--text-muted);
+  padding-left: 0;
+}
+
+/* ─── CHECKLIST ────────────────────────── */
+.checklist {
+  display: grid;
+  gap: 14px;
+  text-align: left;
+}
+
+.checklist-item {
+  padding: 16px 20px;
+  border-radius: 12px;
+  background: rgba(255,184,77,0.12);
+  border: 1px solid rgba(255,184,77,0.2);
+  color: var(--text-main);
+  font-weight: 600;
 }
 
 /* ─── CARDS ────────────────────────────── */
@@ -481,6 +585,8 @@ footer .social-links a {
   .topbar-links { display: none; }
   .hero h1 { font-size: 3rem; }
   .hero-buttons { flex-direction: column; }
+  .page-hero .hero-inner { text-align: center; }
+  .page-hero .hero-buttons { justify-content: center; }
   section { margin-bottom: 70px; }
   .section-dark { padding: 36px 18px; }
   .events-highlight { text-align: center; justify-content: center; }

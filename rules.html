@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>The Hive – Server Rules</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600&family=Inter&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to main content</a>
+
+<header class="topbar">
+  <button class="menu-toggle" aria-label="Open menu" aria-controls="sidebar" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+  <div class="brand">THE HIVE</div>
+  <div class="status-pill">
+    <span class="status-dot"></span>
+    Live Status
+  </div>
+  <nav class="topbar-links">
+    <a href="server.html">Servers</a>
+    <a href="news.html">News</a>
+    <a href="events.html">Events</a>
+    <a href="gallery.html">Gallery</a>
+  </nav>
+</header>
+
+<aside class="sidebar" id="sidebar">
+  <nav class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="server.html">Our Servers</a>
+    <a href="rules.html" class="active">Rules</a>
+    <a href="news.html">News</a>
+    <a href="events.html">Events</a>
+    <a href="gallery.html">Gallery</a>
+    <a href="https://discord.gg/thehivedayz" target="_blank" class="discord-btn">Discord</a>
+  </nav>
+  <div class="sidebar-footer">
+    <form class="admin-form" data-admin-form data-admin-passcode="hiveadmin">
+      <label class="admin-note" for="admin-passcode">Admin access</label>
+      <input type="password" id="admin-passcode" name="admin-passcode" placeholder="Enter passcode" autocomplete="current-password" required>
+      <button type="submit">Admin Login</button>
+      <span class="admin-message" data-admin-message></span>
+    </form>
+  </div>
+</aside>
+
+<div class="overlay" id="overlay"></div>
+
+<main class="main-content" id="main">
+  <section class="hero page-hero">
+    <div class="hero-inner">
+      <span class="hero-tag">Play Fair, Survive Longer</span>
+      <h1>Community Rules</h1>
+      <p>We keep The Hive competitive and welcoming. Follow the guidelines below to avoid warnings or bans.</p>
+      <div class="hero-buttons">
+        <a href="https://discord.gg/thehivedayz" target="_blank" class="btn primary">Open Support Ticket</a>
+        <a href="server.html" class="btn outline">Server Info</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-dark">
+    <h2>Core Expectations</h2>
+    <div class="detail-grid">
+      <div class="detail-card">
+        <h3>Respect & Conduct</h3>
+        <ul class="rule-list">
+          <li>No hate speech, harassment, or targeted abuse.</li>
+          <li>Keep comms clear during staff interactions.</li>
+          <li>Follow Discord moderation requests promptly.</li>
+        </ul>
+      </div>
+      <div class="detail-card">
+        <h3>Combat Integrity</h3>
+        <ul class="rule-list">
+          <li>No combat logging or alt-account scouting.</li>
+          <li>Report suspected cheating with video evidence.</li>
+          <li>Exploit abuse results in immediate bans.</li>
+        </ul>
+      </div>
+      <div class="detail-card">
+        <h3>Base & Raiding</h3>
+        <ul class="rule-list">
+          <li>Raids only during scheduled windows.</li>
+          <li>Do not block spawns or safe hubs.</li>
+          <li>One major base per faction.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2>Enforcement</h2>
+    <div class="features">
+      <div class="card">
+        <h3>Strike System</h3>
+        <p>Minor offenses receive a warning or short suspension. Repeated behavior escalates penalties.</p>
+      </div>
+      <div class="card">
+        <h3>Evidence Review</h3>
+        <p>Staff review clips, screenshots, and logs. Decisions are final once evidence is verified.</p>
+      </div>
+      <div class="card">
+        <h3>Appeals</h3>
+        <p>Appeals are handled through Discord tickets within 7 days of a ban.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-dark">
+    <h2>Quick Checklist</h2>
+    <div class="checklist">
+      <div class="checklist-item">✅ Verify raid windows before striking bases.</div>
+      <div class="checklist-item">✅ Keep factions under 8 players on a single raid.</div>
+      <div class="checklist-item">✅ Record your gameplay for disputes.</div>
+      <div class="checklist-item">✅ Respect staff calls in global chat.</div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div>© <span id="year"></span> The Hive DayZ Community</div>
+  <div class="social-links">
+    <a href="https://discord.gg/thehivedayz" target="_blank">Discord</a> |
+    <a href="https://www.youtube.com/@TheHiveDayZ" target="_blank">YouTube</a>
+  </div>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>
