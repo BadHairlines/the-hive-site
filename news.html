@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>The Hive – News</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600&family=Inter&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to main content</a>
+
+<header class="topbar">
+  <button class="menu-toggle" aria-label="Open menu" aria-controls="sidebar" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+  <div class="brand">THE HIVE</div>
+  <div class="status-pill">
+    <span class="status-dot"></span>
+    Live Status
+  </div>
+  <nav class="topbar-links">
+    <a href="server.html">Servers</a>
+    <a href="news.html">News</a>
+    <a href="events.html">Events</a>
+    <a href="gallery.html">Gallery</a>
+  </nav>
+</header>
+
+<aside class="sidebar" id="sidebar">
+  <nav class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="server.html">Our Servers</a>
+    <a href="rules.html">Rules</a>
+    <a href="news.html" class="active">News</a>
+    <a href="events.html">Events</a>
+    <a href="gallery.html">Gallery</a>
+    <a href="https://discord.gg/thehivedayz" target="_blank" class="discord-btn">Discord</a>
+  </nav>
+</aside>
+
+<div class="overlay" id="overlay"></div>
+
+<main class="main-content" id="main">
+  <section class="hero page-hero">
+    <div class="hero-inner">
+      <span class="hero-tag">Patch Notes & Updates</span>
+      <h1>Latest News</h1>
+      <p>Keep up with balance tweaks, event announcements, and community highlights.</p>
+      <div class="hero-buttons">
+        <a href="events.html" class="btn primary">View Events</a>
+        <a href="https://discord.gg/thehivedayz" target="_blank" class="btn outline">Discord Announcements</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-dark">
+    <h2>Latest Updates</h2>
+    <div class="news-feed" id="news-feed"></div>
+  </section>
+
+  <section class="section">
+    <h2>What to Expect</h2>
+    <div class="features">
+      <div class="card">
+        <h3>Weekly Balance</h3>
+        <p>Loot adjustments and economy tweaks roll out every Friday with full notes.</p>
+      </div>
+      <div class="card">
+        <h3>Server Status</h3>
+        <p>Planned maintenance and downtime are posted 24 hours in advance.</p>
+      </div>
+      <div class="card">
+        <h3>Community Spotlights</h3>
+        <p>Share your clips for a chance to be featured in the Hive recap.</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div>© <span id="year"></span> The Hive DayZ Community</div>
+  <div class="social-links">
+    <a href="https://discord.gg/thehivedayz" target="_blank">Discord</a> |
+    <a href="https://www.youtube.com/@TheHiveDayZ" target="_blank">YouTube</a>
+  </div>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>
