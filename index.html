@@ -8,13 +8,18 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+<a class="skip-link" href="#main">Skip to main content</a>
 
 <!-- TOP BAR -->
 <header class="topbar">
-  <button class="menu-toggle" aria-label="Open menu">
+  <button class="menu-toggle" aria-label="Open menu" aria-controls="sidebar" aria-expanded="false">
     <span></span><span></span><span></span>
   </button>
   <div class="brand">THE HIVE</div>
+  <div class="status-pill">
+    <span class="status-dot"></span>
+    Live Status
+  </div>
   <nav class="topbar-links">
     <a href="#servers">Servers</a>
     <a href="#news">News</a>
@@ -40,7 +45,7 @@
 <div class="overlay" id="overlay"></div>
 
 <!-- MAIN -->
-<main class="main-content">
+<main class="main-content" id="main">
 
   <!-- HERO -->
   <section class="hero hero-dark">
@@ -90,6 +95,16 @@
   <!-- EVENTS -->
   <section class="section-dark" id="events">
     <h2>Upcoming Events</h2>
+    <div class="events-highlight">
+      <div>
+        <h3>Next Raid Window</h3>
+        <p>Prepare your defenses and make your move.</p>
+      </div>
+      <div class="countdown-card">
+        <span>Countdown</span>
+        <div id="countdown">--</div>
+      </div>
+    </div>
     <div class="features" id="events-feed"></div>
   </section>
 

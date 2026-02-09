@@ -27,6 +27,25 @@ body {
 
 a { text-decoration: none; color: inherit; }
 
+/* ─── ACCESSIBILITY ───────────────────── */
+.skip-link {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  padding: 10px 16px;
+  background: var(--hive-main);
+  color: var(--hive-text);
+  border-radius: 8px;
+  transform: translateY(-200%);
+  transition: transform 0.2s ease;
+  z-index: 3000;
+}
+
+.skip-link:focus {
+  transform: translateY(0);
+  outline: 3px solid rgba(255,184,77,0.6);
+}
+
 /* ─── TOP BAR ───────────────────────────── */
 .topbar {
   position: sticky;
@@ -47,6 +66,26 @@ a { text-decoration: none; color: inherit; }
   font-size: 1.6rem;
   letter-spacing: 2px;
   color: var(--hive-accent);
+}
+
+.status-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: rgba(255,184,77,0.12);
+  color: var(--text-main);
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #34d399;
+  box-shadow: 0 0 8px rgba(52,211,153,0.6);
 }
 
 .topbar-links {
@@ -332,6 +371,38 @@ h2 {
   font-size: 0.9rem;
 }
 
+/* ─── EVENTS ─────────────────────────── */
+.events-highlight {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 24px;
+  margin-bottom: 32px;
+  border-radius: 16px;
+  background: rgba(26,26,31,0.8);
+  border: 1px solid rgba(255,184,77,0.2);
+  text-align: left;
+}
+
+.events-highlight h3 { margin-bottom: 6px; }
+
+.countdown-card {
+  padding: 16px 20px;
+  border-radius: 12px;
+  background: rgba(255,184,77,0.12);
+  text-align: center;
+  min-width: 180px;
+}
+
+.countdown-card span {
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  letter-spacing: 1px;
+  color: var(--text-muted);
+}
+
 /* ─── GALLERY ────────────────────────── */
 .gallery-grid {
   display: grid;
@@ -406,9 +477,11 @@ footer .social-links a {
 /* ─── MOBILE ───────────────────────────── */
 @media (max-width: 768px) {
   .main-content { padding: 30px 20px; }
+  .status-pill { display: none; }
   .topbar-links { display: none; }
   .hero h1 { font-size: 3rem; }
   .hero-buttons { flex-direction: column; }
   section { margin-bottom: 70px; }
   .section-dark { padding: 36px 18px; }
+  .events-highlight { text-align: center; justify-content: center; }
 }

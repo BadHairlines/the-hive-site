@@ -7,12 +7,24 @@ btn.addEventListener('click', () => {
   btn.classList.toggle('active');
   sidebar.classList.toggle('open');
   overlay.classList.toggle('show');
+  const isOpen = sidebar.classList.contains('open');
+  btn.setAttribute('aria-expanded', String(isOpen));
 });
 
 overlay.addEventListener('click', () => {
   btn.classList.remove('active');
   sidebar.classList.remove('open');
   overlay.classList.remove('show');
+  btn.setAttribute('aria-expanded', 'false');
+});
+
+document.addEventListener('keydown', (event) => {
+  if (event.key === 'Escape') {
+    btn.classList.remove('active');
+    sidebar.classList.remove('open');
+    overlay.classList.remove('show');
+    btn.setAttribute('aria-expanded', 'false');
+  }
 });
 
 /* ─── FOOTER YEAR ───────────────── */
