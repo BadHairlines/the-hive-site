@@ -21,10 +21,10 @@
     Live Status
   </div>
   <nav class="topbar-links">
-    <a href="#servers">Servers</a>
-    <a href="#news">News</a>
-    <a href="#events">Events</a>
-    <a href="#gallery">Gallery</a>
+    <a href="server.html">Servers</a>
+    <a href="news.html">News</a>
+    <a href="events.html">Events</a>
+    <a href="gallery.html">Gallery</a>
   </nav>
 </header>
 
@@ -34,11 +34,19 @@
     <a href="index.html" class="active">Home</a>
     <a href="server.html">Our Servers</a>
     <a href="rules.html">Rules</a>
-    <a href="#news">News</a>
-    <a href="#events">Events</a>
-    <a href="#gallery">Gallery</a>
+    <a href="news.html">News</a>
+    <a href="events.html">Events</a>
+    <a href="gallery.html">Gallery</a>
     <a href="https://discord.gg/thehivedayz" target="_blank" class="discord-btn">Discord</a>
   </nav>
+  <div class="sidebar-footer">
+    <form class="admin-form" data-admin-form data-admin-passcode="hiveadmin">
+      <label class="admin-note" for="admin-passcode">Admin access</label>
+      <input type="password" id="admin-passcode" name="admin-passcode" placeholder="Enter passcode" autocomplete="current-password" required>
+      <button type="submit">Admin Login</button>
+      <span class="admin-message" data-admin-message></span>
+    </form>
+  </div>
 </aside>
 
 <!-- OVERLAY -->
@@ -146,6 +154,32 @@
       <div class="gallery-card">
         <span>Convoy Drop</span>
         <p>Loot drops that draw every squad.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- DISCORD -->
+  <section class="section discord-section" id="discord">
+    <h2>Join the Discord</h2>
+    <p class="section-intro">Get live announcements, patch notes, and squad recruitment in real time.</p>
+    <div class="discord-grid">
+      <div class="discord-card">
+        <h3>Community HQ</h3>
+        <p>Open the Discord widget below to see who is online, or tap the invite to jump in.</p>
+        <a href="https://discord.gg/thehivedayz" target="_blank" class="btn primary">Open Discord</a>
+        <p class="discord-note">Widget requires a server ID and must be enabled in Discord server settings.</p>
+      </div>
+      <div class="discord-embed">
+        <iframe
+          title="The Hive Discord"
+          data-discord-server-id="YOUR_SERVER_ID"
+          data-discord-widget
+          width="100%"
+          height="380"
+          allowtransparency="true"
+          frameborder="0"
+          sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts">
+        </iframe>
       </div>
     </div>
   </section>

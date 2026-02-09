@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>The Hive – Events</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600&family=Inter&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to main content</a>
+
+<header class="topbar">
+  <button class="menu-toggle" aria-label="Open menu" aria-controls="sidebar" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+  <div class="brand">THE HIVE</div>
+  <div class="status-pill">
+    <span class="status-dot"></span>
+    Live Status
+  </div>
+  <nav class="topbar-links">
+    <a href="server.html">Servers</a>
+    <a href="news.html">News</a>
+    <a href="events.html">Events</a>
+    <a href="gallery.html">Gallery</a>
+  </nav>
+</header>
+
+<aside class="sidebar" id="sidebar">
+  <nav class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="server.html">Our Servers</a>
+    <a href="rules.html">Rules</a>
+    <a href="news.html">News</a>
+    <a href="events.html" class="active">Events</a>
+    <a href="gallery.html">Gallery</a>
+    <a href="https://discord.gg/thehivedayz" target="_blank" class="discord-btn">Discord</a>
+  </nav>
+  <div class="sidebar-footer">
+    <form class="admin-form" data-admin-form data-admin-passcode="hiveadmin">
+      <label class="admin-note" for="admin-passcode">Admin access</label>
+      <input type="password" id="admin-passcode" name="admin-passcode" placeholder="Enter passcode" autocomplete="current-password" required>
+      <button type="submit">Admin Login</button>
+      <span class="admin-message" data-admin-message></span>
+    </form>
+  </div>
+</aside>
+
+<div class="overlay" id="overlay"></div>
+
+<main class="main-content" id="main">
+  <section class="hero page-hero">
+    <div class="hero-inner">
+      <span class="hero-tag">Live Operations</span>
+      <h1>Upcoming Events</h1>
+      <p>From base raids to loot drops, check the schedule and plan your squad nights.</p>
+      <div class="hero-buttons">
+        <a href="news.html" class="btn primary">Latest Patch Notes</a>
+        <a href="https://discord.gg/thehivedayz" target="_blank" class="btn outline">Event Alerts</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-dark">
+    <h2>Next Raid Window</h2>
+    <div class="events-highlight">
+      <div>
+        <h3>Weekend Raids</h3>
+        <p>Coordinate your push, secure the vault, and watch for counterattacks.</p>
+      </div>
+      <div class="countdown-card">
+        <span>Countdown</span>
+        <div id="countdown">--</div>
+      </div>
+    </div>
+    <div class="features" id="events-feed"></div>
+  </section>
+
+  <section class="section">
+    <h2>Event Types</h2>
+    <div class="detail-grid">
+      <div class="detail-card">
+        <h3>Convoy Drops</h3>
+        <p>Loot-filled trucks roll through high-traffic zones. Expect PvP at every stop.</p>
+      </div>
+      <div class="detail-card">
+        <h3>Faction Showdowns</h3>
+        <p>Bracketed fights with rewards for the final squad standing.</p>
+      </div>
+      <div class="detail-card">
+        <h3>Survival Challenges</h3>
+        <p>Run a limited-kit gauntlet for bragging rights and rare loot.</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div>© <span id="year"></span> The Hive DayZ Community</div>
+  <div class="social-links">
+    <a href="https://discord.gg/thehivedayz" target="_blank">Discord</a> |
+    <a href="https://www.youtube.com/@TheHiveDayZ" target="_blank">YouTube</a>
+  </div>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>
