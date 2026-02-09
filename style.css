@@ -475,6 +475,54 @@ h2 {
   font-size: 0.9rem;
 }
 
+/* ─── DISCORD ─────────────────────────── */
+.section-intro {
+  max-width: 720px;
+  margin: -20px auto 32px;
+  color: var(--text-muted);
+}
+
+.discord-section {
+  text-align: center;
+}
+
+.discord-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 24px;
+  align-items: center;
+}
+
+.discord-card {
+  text-align: left;
+  padding: 26px;
+  border-radius: 16px;
+  background: var(--bg-card);
+  border: 1px solid rgba(255,184,77,0.2);
+  box-shadow: 0 12px 24px rgba(0,0,0,0.35);
+  display: grid;
+  gap: 12px;
+}
+
+.discord-note {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.discord-embed {
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid rgba(255,184,77,0.2);
+  background: rgba(26,26,31,0.8);
+  min-height: 380px;
+}
+
+.discord-embed iframe {
+  width: 100%;
+  height: 380px;
+  border: none;
+}
+
 /* ─── EVENTS ─────────────────────────── */
 .events-highlight {
   display: flex;

@@ -6,6 +6,7 @@ const adminForm = document.querySelector('[data-admin-form]');
 const adminMessage = document.querySelector('[data-admin-message]');
 const postForm = document.getElementById('postForm');
 const galleryForm = document.getElementById('galleryForm');
+const discordWidget = document.querySelector('[data-discord-widget]');
 
 if (btn && sidebar && overlay) {
   btn.addEventListener('click', () => {
@@ -114,6 +115,18 @@ if (galleryForm) {
     }
   });
   updateGalleryPreview();
+}
+
+if (discordWidget) {
+  const serverId = discordWidget.dataset.discordServerId;
+  if (serverId && serverId !== 'YOUR_SERVER_ID') {
+    discordWidget.src = `https://discord.com/widget?id=${serverId}&theme=dark`;
+  } else {
+    const fallback = document.createElement('div');
+    fallback.className = 'discord-note';
+    fallback.textContent = 'Add your Discord server ID to enable the widget.';
+    discordWidget.replaceWith(fallback);
+  }
 }
 
 /* ─── FOOTER YEAR ───────────────── */
