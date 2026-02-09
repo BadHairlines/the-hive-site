@@ -537,6 +537,32 @@ h2 {
   font-weight: 600;
 }
 
+/* ─── BRIEF ─────────────────────────── */
+.brief-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 24px;
+  text-align: left;
+}
+
+.brief-card {
+  padding: 26px;
+  border-radius: 16px;
+  background: rgba(26,26,31,0.88);
+  border: 1px solid rgba(255,184,77,0.2);
+  box-shadow: 0 14px 28px rgba(0,0,0,0.35);
+  display: grid;
+  gap: 14px;
+}
+
+.brief-card ul,
+.brief-card ol {
+  margin-left: 18px;
+  color: var(--text-muted);
+  display: grid;
+  gap: 8px;
+}
+
 /* ─── GUIDE ─────────────────────────── */
 .guide-grid {
   display: grid;
@@ -566,6 +592,54 @@ h2 {
   color: var(--hive-main);
   font-weight: 700;
   letter-spacing: 1px;
+}
+
+/* ─── FAQ ─────────────────────────── */
+.faq-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 20px;
+  text-align: left;
+}
+
+.faq-item {
+  padding: 20px 22px;
+  border-radius: 14px;
+  background: var(--bg-card);
+  border: 1px solid rgba(255,184,77,0.18);
+  box-shadow: 0 10px 22px rgba(0,0,0,0.3);
+}
+
+.faq-item summary {
+  cursor: pointer;
+  font-weight: 600;
+  list-style: none;
+  position: relative;
+  padding-right: 18px;
+}
+
+.faq-item summary::after {
+  content: "+";
+  position: absolute;
+  right: 0;
+  top: 0;
+  color: var(--hive-main);
+  font-weight: 700;
+}
+
+.faq-item[open] summary::after {
+  content: "–";
+}
+
+.faq-item p {
+  margin-top: 12px;
+  color: var(--text-muted);
+}
+
+.faq-item summary:focus-visible {
+  outline: 3px solid rgba(255,184,77,0.4);
+  outline-offset: 4px;
+  border-radius: 8px;
 }
 
 .discord-section {
@@ -830,7 +904,9 @@ footer .social-links a {
   .hero-buttons { flex-direction: column; }
   .snapshot-card,
   .pulse-card,
-  .guide-card {
+  .guide-card,
+  .brief-card,
+  .faq-item {
     padding: 20px;
   }
   .events-highlight { padding: 20px; }
