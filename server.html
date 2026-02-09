@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>The Hive – Server Details</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600&family=Inter&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to main content</a>
+
+<header class="topbar">
+  <button class="menu-toggle" aria-label="Open menu" aria-controls="sidebar" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+  <div class="brand">THE HIVE</div>
+  <div class="status-pill">
+    <span class="status-dot"></span>
+    Live Status
+  </div>
+  <nav class="topbar-links">
+    <a href="server.html">Servers</a>
+    <a href="news.html">News</a>
+    <a href="events.html">Events</a>
+    <a href="gallery.html">Gallery</a>
+  </nav>
+</header>
+
+<aside class="sidebar" id="sidebar">
+  <nav class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="server.html" class="active">Our Servers</a>
+    <a href="rules.html">Rules</a>
+    <a href="news.html">News</a>
+    <a href="events.html">Events</a>
+    <a href="gallery.html">Gallery</a>
+    <a href="https://discord.gg/thehivedayz" target="_blank" class="discord-btn">Discord</a>
+  </nav>
+</aside>
+
+<div class="overlay" id="overlay"></div>
+
+<main class="main-content" id="main">
+  <section class="hero page-hero">
+    <div class="hero-inner">
+      <span class="hero-tag">Server Overview</span>
+      <h1>The Hive #1</h1>
+      <p>Hardcore Xbox survival with curated loot, weekend raid windows, and a staff team online every day.</p>
+      <div class="hero-stats">
+        <div><span id="player-count">0/50</span><small>Players Online</small></div>
+        <div><span>Chernarus</span><small>Map</small></div>
+        <div><span>1PP</span><small>Perspective</small></div>
+        <div><span id="server-uptime">--</span><small>Server Uptime</small></div>
+      </div>
+      <div class="hero-buttons">
+        <a href="#join" class="btn primary">How to Join</a>
+        <a href="rules.html" class="btn outline">Read Rules</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-dark">
+    <h2>Server Highlights</h2>
+    <div class="server-grid">
+      <div class="server-card">
+        <h3>Loot Economy</h3>
+        <ul>
+          <li>🎯 Tiered weapons by zone</li>
+          <li>🧭 High-risk hotspots</li>
+          <li>🔧 Balanced base supplies</li>
+        </ul>
+        <a href="news.html" class="btn small">View Latest Patch</a>
+      </div>
+      <div class="server-card">
+        <h3>Raid Schedule</h3>
+        <ul>
+          <li>🕒 Friday 6PM - 10PM</li>
+          <li>🛡️ Saturday 12PM - 10PM</li>
+          <li>⚔️ Sunday 12PM - 8PM</li>
+        </ul>
+        <a href="events.html" class="btn small">Upcoming Events</a>
+      </div>
+      <div class="server-card">
+        <h3>Community Support</h3>
+        <ul>
+          <li>💬 Fast ticket response</li>
+          <li>📣 Weekly announcements</li>
+          <li>🧑‍✈️ Staff online daily</li>
+        </ul>
+        <a href="https://discord.gg/thehivedayz" target="_blank" class="btn small">Join Discord</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="join">
+    <h2>How to Join</h2>
+    <div class="detail-grid">
+      <div class="detail-card">
+        <h3>Search the Server</h3>
+        <p>On Xbox, open the DayZ server browser and search for <strong>The Hive #1</strong> under Community servers.</p>
+      </div>
+      <div class="detail-card">
+        <h3>Confirm Settings</h3>
+        <p>Filter to 1PP, 50 slots, and the Chernarus map to ensure you're joining the main hive.</p>
+      </div>
+      <div class="detail-card">
+        <h3>Introduce Yourself</h3>
+        <p>Hop into Discord to get the latest patch notes, find a squad, and report any issues.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-dark">
+    <h2>Starter Kit</h2>
+    <div class="features">
+      <div class="card">
+        <h3>New Spawn Routes</h3>
+        <p>Check the southern coast for early-tier loot and quick access to medical hubs.</p>
+      </div>
+      <div class="card">
+        <h3>Base Locations</h3>
+        <p>Industrial zones are high traffic — build smart and stash backups before the weekend.</p>
+      </div>
+      <div class="card">
+        <h3>Squad Tools</h3>
+        <p>Use the radio channels and map pings listed in Discord to coordinate your runs.</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div>© <span id="year"></span> The Hive DayZ Community</div>
+  <div class="social-links">
+    <a href="https://discord.gg/thehivedayz" target="_blank">Discord</a> |
+    <a href="https://www.youtube.com/@TheHiveDayZ" target="_blank">YouTube</a>
+  </div>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>
