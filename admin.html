@@ -41,7 +41,7 @@
 
     form {
       max-width: 600px;
-      margin: 0 auto;
+      margin: 0 auto 50px;
       background: var(--bg-card);
       padding: 30px;
       border-radius: 14px;
@@ -103,6 +103,42 @@
       font-weight: 600;
     }
 
+    /* Live Preview */
+    #preview {
+      max-width: 600px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .preview-card {
+      background: var(--bg-card);
+      border: 1px solid rgba(255,184,77,0.18);
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 10px 25px var(--shadow);
+      font-weight: 600;
+      color: var(--text-main);
+      transition: 0.2s;
+    }
+
+    .preview-card h3 {
+      margin-bottom: 8px;
+      font-family: 'Oswald', sans-serif;
+      color: var(--hive-accent);
+    }
+
+    .preview-card p {
+      margin-bottom: 6px;
+      color: var(--text-main);
+    }
+
+    .preview-card small {
+      color: var(--text-muted);
+      font-size: 0.85rem;
+    }
+
     @media (max-width: 768px) {
       body { padding: 20px 12px; }
       form { padding: 20px; }
@@ -114,7 +150,7 @@
 
   <h1>Admin Panel – Add Post</h1>
 
-  <form action="add_post.php" method="POST">
+  <form id="postForm" action="add_post.php" method="POST">
     <label for="type">Type</label>
     <select name="type" id="type" required>
       <option value="news">News</option>
@@ -134,7 +170,40 @@
     <button type="submit">Add Post</button>
   </form>
 
+  <h2 style="text-align:center; color: var(--hive-accent); margin-bottom:20px;">Live Preview</h2>
+  <div id="preview"></div>
+
   <a href="index.html" class="back-link">← Back to Home</a>
+
+  <script>
+    const form = document.getElementById('postForm');
+    const preview = document.getElementById('preview');
+    const typeInput = document.getElementById('type');
+    const titleInput = document.getElementById('title');
+    const dateInput = document.getElementById('date');
+    const contentInput = document.getElementById('content');
+
+    function updatePreview() {
+      preview.innerHTML = ''; // clear previous
+
+      const card = document.createElement('div');
+      card.className = 'preview-card';
+      card.innerHTML = `
+        <h3>${titleInput.value || 'Post Title'}</h3>
+        <p>${contentInput.value || 'Post content will appear here.'}</p>
+        <small>${typeInput.value === 'news' ? 'News' : 'Event'} • ${dateInput.value || 'Date'}</small>
+      `;
+
+      preview.appendChild(card);
+    }
+
+    typeInput.addEventListener('input', updatePreview);
+    titleInput.addEventListener('input', updatePreview);
+    dateInput.addEventListener('input', updatePreview);
+    contentInput.addEventListener('input', updatePreview);
+
+    updatePreview(); // initial preview
+  </script>
 
 </body>
 </html>
