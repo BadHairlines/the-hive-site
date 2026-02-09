@@ -49,6 +49,27 @@ a { text-decoration: none; color: inherit; }
   color: var(--hive-accent);
 }
 
+.topbar-links {
+  margin-left: auto;
+  display: flex;
+  gap: 18px;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+.topbar-links a {
+  padding: 8px 12px;
+  border-radius: 999px;
+  transition: 0.2s ease;
+}
+
+.topbar-links a:hover,
+.topbar-links a:focus-visible {
+  background: rgba(255,184,77,0.18);
+  color: var(--text-main);
+  outline: none;
+}
+
 /* ─── HAMBURGER ─────────────────────────── */
 .menu-toggle {
   width: 36px;
@@ -147,7 +168,22 @@ a { text-decoration: none; color: inherit; }
   box-shadow: 0 30px 80px rgba(0,0,0,0.55);
 }
 
-.hero-content { text-align: center; max-width: 720px; }
+.hero-inner {
+  text-align: center;
+  max-width: 760px;
+  padding: 0 24px;
+}
+
+.hero-tag {
+  display: inline-flex;
+  padding: 6px 14px;
+  border-radius: 999px;
+  background: rgba(255,184,77,0.15);
+  color: var(--hive-main);
+  font-weight: 600;
+  letter-spacing: 0.6px;
+  margin-bottom: 18px;
+}
 
 .hero h1 {
   font-family: 'Oswald', sans-serif;
@@ -156,15 +192,41 @@ a { text-decoration: none; color: inherit; }
   color: var(--text-main);
 }
 
-.platform {
-  margin-top: 14px;
-  font-weight: 600;
-  color: var(--accent);
-  letter-spacing: 1.2px;
+.hero p { color: var(--text-muted); margin-top: 10px; }
+
+.hero-stats {
+  margin: 32px 0 10px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 14px;
 }
+
+.hero-stats div {
+  background: rgba(26,26,31,0.7);
+  border: 1px solid rgba(255,184,77,0.2);
+  border-radius: 12px;
+  padding: 12px;
+}
+
+.hero-stats span {
+  display: block;
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+
+.hero-stats small { color: var(--text-muted); }
 
 /* ─── SECTIONS ─────────────────────────── */
 section { margin-bottom: 100px; text-align: center; }
+.section {
+  padding: 10px 0;
+}
+
+.section-dark {
+  background: rgba(255,255,255,0.02);
+  border-radius: 16px;
+  padding: 50px 30px;
+}
 
 h2 {
   font-family: 'Oswald', sans-serif;
@@ -200,6 +262,35 @@ h2 {
 
 .card img { width: 100%; height: auto; border-radius: 10px; display: block; }
 
+/* ─── SERVERS ─────────────────────────── */
+.server-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 24px;
+}
+
+.server-card {
+  padding: 28px;
+  border-radius: 16px;
+  background: linear-gradient(135deg, rgba(255,223,127,0.12), rgba(26,26,31,0.95));
+  border: 1px solid rgba(255,184,77,0.25);
+  text-align: left;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.3);
+}
+
+.server-card ul {
+  list-style: none;
+  margin: 18px 0 24px;
+  display: grid;
+  gap: 8px;
+  color: var(--text-muted);
+}
+
+.btn.small {
+  padding: 10px 18px;
+  font-size: 0.9rem;
+}
+
 /* ─── HERO BUTTONS ───────────────────────── */
 .hero-buttons { margin-top: 20px; display: flex; gap: 16px; justify-content: center; }
 
@@ -226,6 +317,75 @@ h2 {
   outline-offset: 2px;
 }
 
+/* ─── NEWS ───────────────────────────── */
+.news-feed {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 24px;
+  text-align: left;
+}
+
+.news-feed .date {
+  display: inline-block;
+  margin-top: 14px;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+/* ─── GALLERY ────────────────────────── */
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 18px;
+}
+
+.gallery-card {
+  position: relative;
+  padding: 22px;
+  min-height: 180px;
+  border-radius: 16px;
+  background:
+    linear-gradient(135deg, rgba(255,184,77,0.18), rgba(14,14,16,0.9)),
+    radial-gradient(circle at top, rgba(255,223,127,0.3), transparent 60%);
+  border: 1px solid rgba(255,184,77,0.2);
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.gallery-card span {
+  font-weight: 700;
+  font-size: 1.1rem;
+  margin-bottom: 6px;
+}
+
+.gallery-card p { color: var(--text-muted); }
+
+/* ─── CTA ────────────────────────────── */
+.cta-section { margin-bottom: 40px; }
+
+.cta-card {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  align-items: center;
+  justify-content: space-between;
+  padding: 32px;
+  border-radius: 18px;
+  background: linear-gradient(135deg, rgba(255,223,127,0.18), rgba(26,26,31,0.95));
+  border: 1px solid rgba(255,184,77,0.3);
+  text-align: left;
+}
+
+.cta-card h2 { margin-bottom: 10px; }
+
+.cta-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
 /* ─── EVENTS / COUNTDOWN ─────────────────── */
 #countdown { font-weight: 700; color: var(--hive-accent); font-size: 1.2rem; }
 
@@ -246,7 +406,9 @@ footer .social-links a {
 /* ─── MOBILE ───────────────────────────── */
 @media (max-width: 768px) {
   .main-content { padding: 30px 20px; }
+  .topbar-links { display: none; }
   .hero h1 { font-size: 3rem; }
   .hero-buttons { flex-direction: column; }
   section { margin-bottom: 70px; }
+  .section-dark { padding: 36px 18px; }
 }
