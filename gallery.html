@@ -37,6 +37,14 @@
     <a href="gallery.html" class="active">Gallery</a>
     <a href="https://discord.gg/thehivedayz" target="_blank" class="discord-btn">Discord</a>
   </nav>
+  <div class="sidebar-footer">
+    <form class="admin-form" data-admin-form data-admin-passcode="hiveadmin">
+      <label class="admin-note" for="admin-passcode">Admin access</label>
+      <input type="password" id="admin-passcode" name="admin-passcode" placeholder="Enter passcode" autocomplete="current-password" required>
+      <button type="submit">Admin Login</button>
+      <span class="admin-message" data-admin-message></span>
+    </form>
+  </div>
 </aside>
 
 <div class="overlay" id="overlay"></div>

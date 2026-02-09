@@ -2,6 +2,8 @@
 const btn = document.querySelector('.menu-toggle');
 const sidebar = document.getElementById('sidebar');
 const overlay = document.getElementById('overlay');
+const adminForm = document.querySelector('[data-admin-form]');
+const adminMessage = document.querySelector('[data-admin-message]');
 
 if (btn && sidebar && overlay) {
   btn.addEventListener('click', () => {
@@ -26,6 +28,30 @@ if (btn && sidebar && overlay) {
       overlay.classList.remove('show');
       btn.setAttribute('aria-expanded', 'false');
     }
+  });
+}
+
+if (adminForm) {
+  adminForm.addEventListener('submit', (event) => {
+    event.preventDefault();
+    const input = adminForm.querySelector('input[type="password"]');
+    if (!input) {
+      return;
+    }
+    const entered = input.value.trim();
+    const expected = adminForm.dataset.adminPasscode || '';
+    if (entered && entered === expected) {
+      if (adminMessage) {
+        adminMessage.textContent = 'Access granted. Redirecting...';
+      }
+      window.location.href = 'admin.html';
+      return;
+    }
+    if (adminMessage) {
+      adminMessage.textContent = 'Incorrect passcode. Try again.';
+    }
+    input.focus();
+    input.select();
   });
 }
 

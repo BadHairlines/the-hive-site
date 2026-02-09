@@ -144,6 +144,8 @@ a { text-decoration: none; color: inherit; }
   border-right: 1px solid rgba(255,255,255,0.08);
   transition: transform 0.35s cubic-bezier(.4,0,.2,1);
   z-index: 1500;
+  display: flex;
+  flex-direction: column;
 }
 
 .sidebar.open { transform: translateX(260px); }
@@ -152,6 +154,7 @@ a { text-decoration: none; color: inherit; }
   display: flex;
   flex-direction: column;
   gap: 14px;
+  flex: 1;
 }
 
 .nav-links a {
@@ -173,6 +176,51 @@ a { text-decoration: none; color: inherit; }
 }
 
 .discord-btn { color: var(--hive-accent); }
+
+.sidebar-footer {
+  margin-top: auto;
+  display: grid;
+  gap: 10px;
+}
+
+.admin-form {
+  display: grid;
+  gap: 10px;
+}
+
+.admin-form input {
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid rgba(255,255,255,0.12);
+  background: #121214;
+  color: var(--text-main);
+  font-size: 0.9rem;
+}
+
+.admin-form button {
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: none;
+  background: var(--hive-accent);
+  color: #000;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.admin-form button:hover {
+  transform: translateY(-1px);
+}
+
+.admin-note {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+.admin-message {
+  font-size: 0.8rem;
+  color: var(--hive-main);
+}
 
 /* ─── OVERLAY ───────────────────────────── */
 .overlay {
