@@ -642,6 +642,33 @@ h2 {
   border-radius: 8px;
 }
 
+/* ─── PLAYER HUB ───────────────────── */
+.action-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 24px;
+  text-align: left;
+}
+
+.action-card {
+  padding: 24px;
+  border-radius: 16px;
+  background: rgba(26,26,31,0.92);
+  border: 1px solid rgba(255,184,77,0.22);
+  box-shadow: 0 12px 24px rgba(0,0,0,0.35);
+  display: grid;
+  gap: 12px;
+}
+
+.action-card .btn {
+  width: fit-content;
+}
+
+.action-meta {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
 .discord-section {
   text-align: center;
 }
@@ -906,7 +933,8 @@ footer .social-links a {
   .pulse-card,
   .guide-card,
   .brief-card,
-  .faq-item {
+  .faq-item,
+  .action-card {
     padding: 20px;
   }
   .events-highlight { padding: 20px; }
