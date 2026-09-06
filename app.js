@@ -7,6 +7,18 @@ const adminMessage = document.querySelector('[data-admin-message]');
 const postForm = document.getElementById('postForm');
 const galleryForm = document.getElementById('galleryForm');
 const discordWidget = document.querySelector('[data-discord-widget]');
+const siteNav = document.getElementById('site-nav');
+
+if (btn && siteNav) {
+  btn.addEventListener('click', () => {
+    const isOpen = siteNav.classList.toggle('open');
+    btn.setAttribute('aria-expanded', String(isOpen));
+  });
+  siteNav.querySelectorAll('a').forEach((link) => link.addEventListener('click', () => {
+    siteNav.classList.remove('open');
+    btn.setAttribute('aria-expanded', 'false');
+  }));
+}
 
 if (btn && sidebar && overlay) {
   btn.addEventListener('click', () => {
@@ -135,28 +147,11 @@ if (yearEl) {
   yearEl.textContent = new Date().getFullYear();
 }
 
-/* ─── FAKE SERVER STATUS ───────────────── */
-function updateServerStatus() {
-  const maxPlayers = 50;
-  const currentPlayers = Math.floor(Math.random() * maxPlayers);
-  const uptime = '12h 34m';
-  const playerCountEl = document.getElementById('player-count');
-  const uptimeEl = document.getElementById('server-uptime');
-  if (playerCountEl) {
-    playerCountEl.textContent = `${currentPlayers}/${maxPlayers}`;
-  }
-  if (uptimeEl) {
-    uptimeEl.textContent = uptime;
-  }
-}
-updateServerStatus();
-if (document.getElementById('player-count') || document.getElementById('server-uptime')) {
-  setInterval(updateServerStatus, 10000);
-}
+/* Live server data is intentionally not fabricated. */
 
 /* ─── COUNTDOWN ───────────────── */
 function countdown() {
-  const eventDate = new Date("2026-01-20T20:00:00").getTime();
+  const eventDate = nextRaidWindow();
   const now = new Date().getTime();
   const diff = eventDate - now;
 
@@ -176,6 +171,18 @@ function countdown() {
 
   countdownEl.textContent = `${days}d ${hours}h ${minutes}m ${seconds}s`;
 }
+function nextRaidWindow() {
+  const now = new Date();
+  const formatter = new Intl.DateTimeFormat('en-US', {timeZone:'America/New_York',weekday:'short',year:'numeric',month:'2-digit',day:'2-digit'});
+  const parts = Object.fromEntries(formatter.formatToParts(now).map(part => [part.type, part.value]));
+  const weekdays = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+  let daysAhead = (5 - weekdays.indexOf(parts.weekday) + 7) % 7;
+  const easternHour = Number(new Intl.DateTimeFormat('en-US',{timeZone:'America/New_York',hour:'2-digit',hour12:false}).format(now));
+  if (daysAhead === 0 && easternHour >= 20) daysAhead = 7;
+  const target = new Date(now.getTime() + daysAhead * 86400000);
+  const targetParts = Object.fromEntries(formatter.formatToParts(target).map(part => [part.type, part.value]));
+  return new Date(`${targetParts.year}-${targetParts.month}-${targetParts.day}T20:00:00-04:00`).getTime();
+}
 countdown();
 if (document.getElementById('countdown')) {
   setInterval(countdown, 1000);
@@ -189,6 +196,7 @@ fetch('news.json')
     if (!feed) {
       return;
     }
+    feed.innerHTML = '';
     news.reverse().forEach(item => {
       const card = document.createElement('div');
       card.className = 'card';
@@ -215,7 +223,7 @@ fetch('events.json')
       card.innerHTML = `
         <h3>${event.title}</h3>
         <p>${event.description}</p>
-        <p><strong>${new Date(event.date).toLocaleString()}</strong></p>
+        <p><strong>${event.recurring ? event.date : new Date(event.date).toLocaleString()}</strong></p>
       `;
       feed.appendChild(card);
     });

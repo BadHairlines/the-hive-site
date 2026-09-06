@@ -1,7 +1,8 @@
 [
   {
-    "title": "The Purge Is Live",
-    "date": "2026-01-20T20:00:00",
-    "description": "The Purge has begun and will remain active until Monday. All actions are permitted during this period — with the sole exception of exploits."
+    "title": "Weekly Raid Weekend",
+    "date": "Every Friday at 8 PM EST",
+    "description": "Base damage stays enabled through Sunday at 8 PM EST across both Hive maps.",
+    "recurring": true
   }
 ]
