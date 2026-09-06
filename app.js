@@ -12,7 +12,7 @@ function upgradeLegacyShell() {
   ];
   legacyHeader.outerHTML = `
     <header class="manager-nav">
-      <a class="manager-brand" href="index.html"><span class="hive-hex">H</span><span>THE HIVE<small>DAYZ COMMUNITY</small></span></a>
+      <a class="manager-brand" href="index.html"><img class="brand-logo" src="assets/HiveLogo.webp" alt=""><span>THE HIVE<small>DAYZ COMMUNITY</small></span></a>
       <button class="menu-toggle" aria-label="Open navigation" aria-expanded="false" aria-controls="site-nav"><span></span><span></span><span></span></button>
       <nav id="site-nav" class="manager-links" aria-label="Primary navigation">
         ${links.map(([href, label]) => `<a href="${href}" class="${file === href ? 'active' : ''}">${label}</a>`).join('')}
@@ -26,7 +26,7 @@ function upgradeLegacyShell() {
   if (legacyFooter) {
     legacyFooter.className = 'manager-footer';
     legacyFooter.innerHTML = `
-      <a class="manager-brand" href="index.html"><span class="hive-hex">H</span><span>THE HIVE<small>DAYZ COMMUNITY</small></span></a>
+      <a class="manager-brand" href="index.html"><img class="brand-logo" src="assets/HiveLogo.webp" alt=""><span>THE HIVE<small>DAYZ COMMUNITY</small></span></a>
       <div>${links.slice(1).map(([href, label]) => `<a href="${href}">${label}</a>`).join('')}</div>
       <p>© <span id="year"></span> The Hive DayZ. Not affiliated with Bohemia Interactive.</p>`;
   }
