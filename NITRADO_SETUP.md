@@ -20,12 +20,12 @@ After saving the variables, redeploy the Railway service. Do not send the token 
 
 ## Railway commands
 
-Build command: leave blank.
+Build command: leave blank. Railway will detect `package.json` and install Node.js automatically.
 
 Start command:
 
 ```bash
-php -S 0.0.0.0:$PORT
+npm start
 ```
 
 ## What visitors can see
