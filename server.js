@@ -13,31 +13,57 @@ function json(res, status, payload) {
 }
 
 async function nitradoGet(url, token) {
-  const response = await fetch(url, {headers:{Authorization:`Bearer ${token}`,Accept:'application/json','User-Agent':'TheHiveDayZ-Website/1.0'},signal:AbortSignal.timeout(10000)});
-  if (!response.ok) throw new Error(`Nitrado returned ${response.status}`);
-  const payload = await response.json();
+  let response;
+  try {
+    response = await fetch(url, {headers:{Authorization:`Bearer ${token}`,Accept:'application/json','User-Agent':'TheHiveDayZ-Website/1.0'},signal:AbortSignal.timeout(10000)});
+  } catch (error) {
+    throw diagnosticError(error?.name === 'TimeoutError' ? 'REQUEST_TIMEOUT' : 'NETWORK_FAILURE');
+  }
+  if (!response.ok) throw diagnosticError(`HTTP_${response.status}`);
+  let payload;
+  try { payload = await response.json(); }
+  catch { throw diagnosticError('INVALID_JSON'); }
+  if (!payload || typeof payload !== 'object') throw diagnosticError('INVALID_RESPONSE');
+  if (payload.status && payload.status !== 'success') throw diagnosticError('API_REPORTED_FAILURE');
   return payload.data || {};
+}
+
+function diagnosticError(code) {
+  const error = new Error(code);
+  error.diagnosticCode = code;
+  return error;
 }
 
 async function serverStatus(res) {
   if (cache.body && Date.now() < cache.expires) return json(res, 200, cache.body);
   const token = String(process.env.NITRADO_TOKEN || '').trim();
   if (!token) return json(res, 503, {ok:false,error:'Live server status is not configured.'});
+  let stage = 'configuration';
+  let serviceCount = null;
+  let matchedCount = null;
+  let serverIndex = null;
   try {
     const labels = String(process.env.NITRADO_SERVER_LABELS || '').split(',').map(v=>v.trim()).filter(Boolean);
     let ids = String(process.env.NITRADO_SERVICE_IDS || '').split(',').map(v=>v.trim()).filter(v=>/^\d+$/.test(v));
     if (!ids.length) {
+      stage = 'service_discovery';
       const data = await nitradoGet('https://api.nitrado.net/services', token);
+      if (!Array.isArray(data.services)) throw diagnosticError('INVALID_SERVICES_RESPONSE');
+      serviceCount = data.services.length;
       ids = (data.services || []).filter(service => {
         const type = String(service.service_type || '').toLowerCase();
         const game = String(service.details?.game || '').toLowerCase();
         return type === 'gameserver' && (!game || game.includes('dayz'));
       }).map(service=>String(service.id)).filter(id=>/^\d+$/.test(id));
     }
-    if (!ids.length) throw new Error('No accessible DayZ services found');
+    matchedCount = ids.length;
+    if (!ids.length) throw diagnosticError('NO_MATCHING_DAYZ_SERVICES');
     const servers = [];
     for (const [index, id] of ids.entries()) {
+      stage = 'gameserver_details';
+      serverIndex = index + 1;
       const data = await nitradoGet(`https://api.nitrado.net/services/${encodeURIComponent(id)}/gameservers`, token);
+      if (!data.gameserver || typeof data.gameserver !== 'object') throw diagnosticError('INVALID_GAMESERVER_RESPONSE');
       const game = data.gameserver || {};
       const query = game.query || {};
       const config = game.settings?.config || {};
@@ -54,6 +80,11 @@ async function serverStatus(res) {
     cache.body = body; cache.expires = Date.now() + 30000;
     return json(res, 200, body);
   } catch (error) {
+    // Only locally generated codes and counts: never log tokens, URLs,
+    // response bodies, headers, service IDs, or raw exception messages.
+    const code = /^(HTTP_[1-5][0-9]{2}|REQUEST_TIMEOUT|NETWORK_FAILURE|INVALID_JSON|INVALID_RESPONSE|API_REPORTED_FAILURE|INVALID_SERVICES_RESPONSE|NO_MATCHING_DAYZ_SERVICES|INVALID_GAMESERVER_RESPONSE)$/.test(error?.diagnosticCode || '')
+      ? error.diagnosticCode : 'UNEXPECTED_FAILURE';
+    console.error('[Nitrado]', JSON.stringify({stage, code, serviceCount, matchedCount, serverIndex, usingCachedData: Boolean(cache.body)}));
     if (cache.body) return json(res, 200, cache.body);
     return json(res, 502, {ok:false,error:'Live status is temporarily unavailable.'});
   }
