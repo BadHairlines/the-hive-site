@@ -45,16 +45,20 @@ async function serverStatus(res) {
   try {
     const labels = String(process.env.NITRADO_SERVER_LABELS || '').split(',').map(v=>v.trim()).filter(Boolean);
     let ids = String(process.env.NITRADO_SERVICE_IDS || '').split(',').map(v=>v.trim()).filter(v=>/^\d+$/.test(v));
+    const serviceHints = new Map();
     if (!ids.length) {
       stage = 'service_discovery';
       const data = await nitradoGet('https://api.nitrado.net/services', token);
       if (!Array.isArray(data.services)) throw diagnosticError('INVALID_SERVICES_RESPONSE');
       serviceCount = data.services.length;
-      ids = (data.services || []).filter(service => {
-        const type = String(service.service_type || '').toLowerCase();
-        const game = String(service.details?.game || '').toLowerCase();
-        return type === 'gameserver' && (!game || game.includes('dayz'));
-      }).map(service=>String(service.id)).filter(id=>/^\d+$/.test(id));
+      // Service type varies by product/platform. Inspect each service's
+      // gameserver details before deciding whether it is DayZ.
+      for (const service of data.services) {
+        if (service && /^\d+$/.test(String(service.id))) {
+          serviceHints.set(String(service.id), service.details?.game);
+        }
+      }
+      ids = [...serviceHints.keys()];
     }
     matchedCount = ids.length;
     if (!ids.length) throw diagnosticError('NO_MATCHING_DAYZ_SERVICES');
@@ -62,20 +66,35 @@ async function serverStatus(res) {
     for (const [index, id] of ids.entries()) {
       stage = 'gameserver_details';
       serverIndex = index + 1;
-      const data = await nitradoGet(`https://api.nitrado.net/services/${encodeURIComponent(id)}/gameservers`, token);
+      let data;
+      try {
+        data = await nitradoGet(`https://api.nitrado.net/services/${encodeURIComponent(id)}/gameservers`, token);
+      } catch (error) {
+        // Non-game products may not have this endpoint. Do not hide
+        // authentication, permission, network, or upstream failures.
+        if (error.diagnosticCode === 'HTTP_404') continue;
+        throw error;
+      }
       if (!data.gameserver || typeof data.gameserver !== 'object') throw diagnosticError('INVALID_GAMESERVER_RESPONSE');
       const game = data.gameserver || {};
+      const gameNames = [game.game, game.game_short, game.game_name];
+      const identifiers = gameNames.filter(value => typeof value === 'string' && value.trim());
+      if (!identifiers.length && typeof serviceHints.get(id) === 'string') identifiers.push(serviceHints.get(id));
+      if (!identifiers.some(value => /dayz/i.test(value))) continue;
       const query = game.query || {};
       const config = game.settings?.config || {};
+      const label = labels[servers.length] || `Hive Server ${servers.length + 1}`;
       servers.push({
-        label: labels[index] || `Hive Server ${index + 1}`,
-        name: String(query.server_name || config.hostname || labels[index] || 'The Hive'),
+        label,
+        name: String(query.server_name || config.hostname || label || 'The Hive'),
         status: String(game.status || 'unknown'),
         map: String(query.map || ''),
         players: Number(query.player_current || 0),
         slots: Number(query.player_max || config.maxplayers || 0)
       });
     }
+    matchedCount = servers.length;
+    if (!servers.length) throw diagnosticError('NO_MATCHING_DAYZ_SERVICES');
     const body = {ok:true,updated_at:new Date().toISOString(),servers,totals:{players:servers.reduce((n,s)=>n+s.players,0),slots:servers.reduce((n,s)=>n+s.slots,0)}};
     cache.body = body; cache.expires = Date.now() + 30000;
     return json(res, 200, body);
