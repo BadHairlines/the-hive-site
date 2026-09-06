@@ -44,6 +44,35 @@ const galleryForm = document.getElementById('galleryForm');
 const discordWidget = document.querySelector('[data-discord-widget]');
 const siteNav = document.getElementById('site-nav');
 
+async function loadNitradoStatus() {
+  const grid = document.querySelector('[data-live-server-grid]');
+  const totalPlayers = document.querySelector('[data-total-players]');
+  try {
+    const response = await fetch('api/server-status.php', { headers: { Accept: 'application/json' } });
+    if (!response.ok) throw new Error('Status unavailable');
+    const data = await response.json();
+    if (!data.ok || !Array.isArray(data.servers)) throw new Error('Invalid status');
+    if (totalPlayers) totalPlayers.textContent = `${data.totals.players}/${data.totals.slots}`;
+    if (grid) {
+      const escapeHtml = (value) => String(value).replace(/[&<>'"]/g, (character) => ({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[character]));
+      grid.innerHTML = data.servers.map((server) => {
+        const online = ['started', 'running', 'online'].includes(String(server.status).toLowerCase());
+        const percent = server.slots ? Math.min(100, Math.round((server.players / server.slots) * 100)) : 0;
+        return `<article class="live-server-card">
+          <div class="live-server-head"><span class="live-dot ${online ? 'online' : ''}"></span><small>${online ? 'ONLINE' : server.status.toUpperCase()}</small></div>
+          <h3>${escapeHtml(server.label)}</h3><p>${escapeHtml(server.name)}</p>
+          <strong>${server.players}<span> / ${server.slots} players</span></strong>
+          <div class="player-meter"><i style="width:${percent}%"></i></div>
+          ${server.map ? `<small class="map-label">${escapeHtml(server.map)}</small>` : ''}
+        </article>`;
+      }).join('');
+    }
+  } catch (error) {
+    if (grid) grid.innerHTML = '<div class="status-unavailable">Live Nitrado status is temporarily unavailable. Server details remain below.</div>';
+  }
+}
+if (document.querySelector('[data-live-server-grid]') || document.querySelector('[data-total-players]')) loadNitradoStatus();
+
 if (btn && siteNav) {
   btn.addEventListener('click', () => {
     const isOpen = siteNav.classList.toggle('open');
