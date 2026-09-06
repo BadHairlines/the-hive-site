@@ -1,7 +1,8 @@
 [
-  {
-    "title": "Full Server Wipe Incoming",
-    "content": "A full server wipe is scheduled following this weekend. Prepare accordingly, as all progress will be reset.",
-    "date": "2026-01-19"
-  }
+  {"title":"Official Rulebook Updated","content":"Community, server, base-building, raid, weekday-entry, and faction rules have been consolidated into one official rulebook.","date":"2026-09-05"},
+  {"title":"Event Team Recruitment","content":"The Hive is recruiting active, mature members aged 18+ to coordinate and host daily events including Fight Nights, FFA, CTF, Gun Game, KOTH, and faction battles.","date":"2026-08-10"},
+  {"title":"Moderator Applications Open","content":"Dedicated and active community members can apply to help with support tickets, reports, moderation, and keeping both servers fair.","date":"2026-08-03"},
+  {"title":"Automatic Spawn-Kill Enforcement","content":"Two spawn kills trigger a two-minute temporary ban. After two temporary bans, the next spawn-kill violation results in an automatic permanent ban.","date":"2026-07-27"},
+  {"title":"Faction Balance Is Live","content":"Factions can pool cash and credits, control deposit, withdrawal, and spending permissions, and pay directly from their shared balance.","date":"2026-07-15"},
+  {"title":"Server Economy Overhaul","content":"PvP, base building, active play, and survival now drive a more meaningful economy, while deaths and combat logging carry financial consequences.","date":"2026-07-11"}
 ]

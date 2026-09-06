@@ -1,4 +1,39 @@
-/* ─── SIDEBAR TOGGLE ───────────────── */
+/* ─── SHARED DAYZ MANAGER-STYLE SHELL ───────────────── */
+function upgradeLegacyShell() {
+  const legacyHeader = document.querySelector('.topbar');
+  if (!legacyHeader) return;
+
+  document.body.classList.add('dm-layout', 'interior-layout');
+  const file = window.location.pathname.split('/').pop() || 'index.html';
+  const links = [
+    ['index.html', 'Home'], ['server.html', 'Servers'], ['rules.html', 'Rules'],
+    ['news.html', 'News'], ['events.html', 'Events'], ['gallery.html', 'Gallery'],
+    ['shop.html', 'Support Us']
+  ];
+  legacyHeader.outerHTML = `
+    <header class="manager-nav">
+      <a class="manager-brand" href="index.html"><span class="hive-hex">H</span><span>THE HIVE<small>DAYZ COMMUNITY</small></span></a>
+      <button class="menu-toggle" aria-label="Open navigation" aria-expanded="false" aria-controls="site-nav"><span></span><span></span><span></span></button>
+      <nav id="site-nav" class="manager-links" aria-label="Primary navigation">
+        ${links.map(([href, label]) => `<a href="${href}" class="${file === href ? 'active' : ''}">${label}</a>`).join('')}
+      </nav>
+      <a class="manager-login" href="https://discord.gg/thehivedayz" target="_blank" rel="noopener">Join Discord</a>
+    </header>`;
+
+  document.querySelector('.sidebar')?.remove();
+  document.querySelector('.overlay')?.remove();
+  const legacyFooter = document.querySelector('footer');
+  if (legacyFooter) {
+    legacyFooter.className = 'manager-footer';
+    legacyFooter.innerHTML = `
+      <a class="manager-brand" href="index.html"><span class="hive-hex">H</span><span>THE HIVE<small>DAYZ COMMUNITY</small></span></a>
+      <div>${links.slice(1).map(([href, label]) => `<a href="${href}">${label}</a>`).join('')}</div>
+      <p>© <span id="year"></span> The Hive DayZ. Not affiliated with Bohemia Interactive.</p>`;
+  }
+}
+upgradeLegacyShell();
+
+/* ─── NAVIGATION TOGGLE ───────────────── */
 const btn = document.querySelector('.menu-toggle');
 const sidebar = document.getElementById('sidebar');
 const overlay = document.getElementById('overlay');
@@ -197,7 +232,7 @@ fetch('news.json')
       return;
     }
     feed.innerHTML = '';
-    news.reverse().forEach(item => {
+    news.sort((a, b) => new Date(b.date) - new Date(a.date)).forEach(item => {
       const card = document.createElement('div');
       card.className = 'card';
       card.innerHTML = `
